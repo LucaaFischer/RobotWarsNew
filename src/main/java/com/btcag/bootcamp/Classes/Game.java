@@ -61,7 +61,11 @@ public class Game {
 
     //-----------------------------------------------------------------Prüfen ob es zum Kampf kommt----------------------------------------------------------------------------------
     public static boolean checkFight(Robot robot1, Robot robot2) {
-        return (robot1.x == robot2.x && robot1.y == robot2.y);
+        return (robot1.x + robot1.range >= robot2.x && robot2.x > robot1.x && robot1.y + robot1.range >= robot2.y && robot2.y > robot1.y
+                || robot1.x - robot1.range <= robot2.x && robot2.x < robot1.x && robot1.y - robot1.range <= robot2.y && robot2.y < robot1.y
+                || robot1.x + robot1.range >= robot2.x && robot2.x > robot1.x && robot1.y - robot1.range <= robot2.y && robot2.y < robot1.y
+                || robot1.x - robot1.range <= robot2.x && robot2.x < robot1.x && robot1.y + robot1.range >= robot2.y && robot2.y > robot1.y);
+
     }
 
     //------------------------------------------------------------------------Kampfablauf--------------------------------------------------------------------------------------------
