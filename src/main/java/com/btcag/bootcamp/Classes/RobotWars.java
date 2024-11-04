@@ -24,7 +24,7 @@ public class RobotWars {
 
         //----------------------------------------------------------------Verteilung der Start-Stats---------------------------------------------------------------------------------------
         System.out.println("Anfang der Runde. Verteilt eure Start-Skillpoints!");
-        Game.useSkillPoints(player1, player2, robot1, robot2);
+        SkillPoints.useSkillPoints(player1, player2, robot1, robot2);
 
         //---------------------------------------------------------------------Spielablauf----------------------------------------------------------------------------------------------
         while (!Game.checkWin(robot1, robot2)) {
