@@ -19,22 +19,32 @@ public class RobotWars {
         player2.getName();
         player2.getAvatar();
 
-        System.out.println("WILLKOMMEN ZU ROBOT-WARS " + player1.playerName.toUpperCase() + " UND " + player2.playerName.toUpperCase() + " !!!");
-        System.out.println("Dein Avatar " + player1.playerName + ": " + player1.playerAvatar);
-        System.out.println("Dein Avatar " + player2.playerName + ": " + player2.playerAvatar);
+        System.out.println(STR."WILLKOMMEN ZU ROBOT-WARS \{player1.playerName.toUpperCase()} UND \{player2.playerName.toUpperCase()} !!!");
+        System.out.println(STR."Dein Avatar \{player1.playerName}: \{player1.playerAvatar}");
+        System.out.println(STR."Dein Avatar \{player2.playerName}: \{player2.playerAvatar}");
 
         //----------------------------------------------------------------Verteilung der Start-Stats---------------------------------------------------------------------------------------
         System.out.println("Anfang der Runde. Verteilt eure Start-Skillpoints!");
         SkillPoints.useSkillPoints(player1, player2, robot1, robot2);
 
         //---------------------------------------------------------------------Spielablauf----------------------------------------------------------------------------------------------
-        while (!Game.checkWin(robot1, robot2)) {
-            Game.turn(robot1, robot2, player1, player2);
+        while (!Fight.checkWin(robot1, robot2)) {
+            if (Game.countTurns % 2 == 0) {
+                Game.turn(robot1, robot2, player1, player2);
+
+            } else {
+                Game.turn(robot2, robot1, player2, player1);
+
+                if (!Fight.checkWin(robot2, robot1)) {
+                    System.out.println("Ende der Runde. Nutzt eure Skillpoints!");
+                    SkillPoints.useSkillPoints(player1, player2, robot1, robot2);
+                }
+            }
+            Game.countTurns++;
         }
 
         //-----------------------------------------------------------------Ausgabe des Gewinners---------------------------------------------------------------------------------------
-        System.out.println("The winner is " + Game.checkWinner(robot1, robot2, player1, player2));
+        System.out.println(STR."The winner is \{Fight.checkWinner(robot1, robot2, player1, player2)}");
     }
 }
-
 

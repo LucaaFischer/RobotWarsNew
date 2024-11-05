@@ -21,7 +21,7 @@ public class Player {
 
     //----------------------------------------------------------------------------Avatarerstellung--------------------------------------------------------------------------------------
     public void getAvatar() {
-        System.out.println("Wähle ein Zeichen als Avatar " + playerName);
+        System.out.println(STR."Wähle ein Zeichen als Avatar \{playerName}");
         this.playerAvatar = input.nextLine();
 
         while (playerAvatar.length() != 1) {

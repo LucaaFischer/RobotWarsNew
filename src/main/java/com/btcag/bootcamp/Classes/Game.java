@@ -1,146 +1,61 @@
 package com.btcag.bootcamp.Classes;
 
+import java.util.Scanner;
+
 public class Game {
     //---------------------------------------------------------------------------Startpositionen für die Roboter------------------------------------------------------------------
     public static int countTurns = 0;
-    public static int tempRoboOneX = 1;
-    public static int tempRoboOneY = 1;
-    public static int tempRoboTwoX = 15;
-    public static int tempRoboTwoY = 15;
+    public static int tempRobotTurnX;
+    public static int tempRobotTurnY;
 
     //----------------------------------------------------------------------------------Spielzüge--------------------------------------------------------------------------------------
-    public static void turn(Robot robot1, Robot robot2, Player player1, Player player2) {
-        int movementThisRound = 0;
+    public static void turn(Robot robotTurn, Robot robotNotTurn, Player playerTurn, Player playerNotTurn) {
+        Scanner input = new Scanner(System.in);
+        int movementThisRound = robotTurn.movement;
+        tempRobotTurnX = robotTurn.x;
+        tempRobotTurnY = robotTurn.y;
 
-        if (countTurns % 2 == 0) {
-            movementThisRound = robot1.movement;
+        System.out.println(STR."\{playerTurn.playerName} ist dran!");
 
-            System.out.println(player1.playerName + " ist dran!");
+        while (movementThisRound > 0 && !Fight.checkWin(robotTurn, robotNotTurn)) {
+            System.out.println(STR."Du kannst dich noch \{movementThisRound} mal bewegen, \{playerTurn.playerName}!");
 
-            while (movementThisRound > 0) {
-                System.out.println("Du kannst dich noch " + movementThisRound + " mal bewegen, " + player1.playerName + "!");
-                do {
-                    robot1.getMove();
-                } while (!moveValid(robot1, robot2));
-
-                movementThisRound--;
-                tempRoboOneX = robot1.x;
-                tempRoboOneY = robot1.y;
-                Board.drawBoard(robot1, robot2, player1, player2);
-            }
-
-            player1.skillPoints++;
-
-        } else {
-            movementThisRound = robot2.movement;
-
-            System.out.println(player2.playerName + " ist dran!");
-
-            while (movementThisRound > 0) {
-            System.out.println("Du kannst dich noch " + movementThisRound + " mal bewegen, " + player2.playerName + "!");
             do {
-                robot2.getMove();
-            } while (!moveValid(robot1, robot2));
+                robotTurn.getMove();
+            } while (!moveValid(robotTurn, robotNotTurn));
 
-                movementThisRound--;
-                tempRoboTwoX = robot2.x;
-                tempRoboTwoY = robot2.y;
-                Board.drawBoard(robot1, robot2, player1, player2);
+            if(Fight.inRange(robotTurn, robotNotTurn)) {
+                System.out.println("Du befindest dich in Angriffsreichweite! (Ein Angriff beendet deinen Zug.)");
+                System.out.println("1 --> ANGRIFF!");
+                int attack = input.nextInt();
+                if (attack == 1) {
+                    Fight.fight(robotTurn, robotNotTurn, playerTurn, playerNotTurn);
+                    movementThisRound = 0;
+                } else {
+                    System.out.println("Angst oder wat?");
+                }
             }
 
-            player2.skillPoints++;
+            tempRobotTurnX = robotTurn.x;
+            tempRobotTurnY = robotTurn.y;
+            movementThisRound--;
+            Board.drawBoard(robotTurn, robotNotTurn, playerTurn, playerNotTurn);
         }
 
-        if (checkFight(robot1, robot2)) {
-            fight(robot1, robot2, player1, player2);
-        }
-
-        if (countTurns % 2 != 0) {
-            System.out.println("Ende der Runde. Nutzt eure Skillpoints!");
-            SkillPoints.useSkillPoints(player1, player2, robot1, robot2);
-        }
-
-        countTurns++;
+        playerTurn.skillPoints++;
     }
 
     //----------------------------------------------------------------Überprüfung auf Möglichkeit des Zuges------------------------------------------------------------------------------
-    public static boolean moveValid(Robot robot1, Robot robot2) {
-        if (robot1.x > 15 || robot1.y > 15 || robot1.x < 1 || robot1.y < 1 || robot2.x > 15 || robot2.y > 15 || robot2.x < 1 || robot2.y < 1) {
+    public static boolean moveValid(Robot robotTurn, Robot robotNotTurn) {
+        if (robotTurn.x > 15 || robotTurn.y > 15 || robotTurn.x < 1 || robotTurn.y < 1 || robotNotTurn.x > 15 || robotNotTurn.y > 15 || robotNotTurn.x < 1 || robotNotTurn.y < 1) {
             System.out.println("Zug außerhalb des Spielfelds! Mach nochmal.");
             return false;
-        } else if (robot1.x > tempRoboOneX + 1 || robot1.y > tempRoboOneY + 1 || robot1.x < tempRoboOneX - 1 || robot1.y < tempRoboOneY - 1
-                || robot2.x > tempRoboTwoX + 1 || robot2.y > tempRoboTwoY + 1 || robot2.x < tempRoboTwoX - 1 || robot2.y < tempRoboTwoY - 1) {
+        } else if (robotTurn.x > tempRobotTurnX + 1 || robotTurn.y > tempRobotTurnY + 1 || robotTurn.x < tempRobotTurnX - 1 || robotTurn.y < tempRobotTurnY - 1) {
             System.out.println("Zug nicht möglich! Mach nochmal.");
             return false;
         } else {
             return true;
         }
-    }
-
-    //-----------------------------------------------------------------Prüfen ob es zum Kampf kommt----------------------------------------------------------------------------------
-    public static boolean checkFight(Robot robot1, Robot robot2) {
-        return (robot1.x + robot1.range >= robot2.x && robot2.x > robot1.x && robot1.y + robot1.range >= robot2.y && robot2.y > robot1.y
-                || robot1.x - robot1.range <= robot2.x && robot2.x < robot1.x && robot1.y - robot1.range <= robot2.y && robot2.y < robot1.y
-                || robot1.x + robot1.range >= robot2.x && robot2.x > robot1.x && robot1.y - robot1.range <= robot2.y && robot2.y < robot1.y
-                || robot1.x - robot1.range <= robot2.x && robot2.x < robot1.x && robot1.y + robot1.range >= robot2.y && robot2.y > robot1.y);
-
-    }
-
-    //------------------------------------------------------------------------Kampfablauf--------------------------------------------------------------------------------------------
-    public static void fight(Robot robot1, Robot robot2, Player player1, Player player2) {
-        System.out.println("ES KOMMT ZU EINEM SPANNENDEN KAMPF DE LA ROBOTS");
-        int tempRoboOneDmg = robot1.damage;
-        int tempRoboTwoDmg = robot2.damage;
-
-        tempRoboTwoDmg -= robot1.shield;
-        tempRoboOneDmg -= robot2.shield;
-
-        if (robot2.shield > robot1.damage) {
-            robot2.shield -= robot1.damage;
-        } else if (robot2.shield < robot1.damage) {
-            robot2.shield = 0;
-        }
-        if (robot1.shield > robot2.damage) {
-            robot1.shield -= robot2.damage;
-        } else if (robot1.shield < robot2.damage) {
-            robot1.shield = 0;
-        }
-
-        if (tempRoboOneDmg > 0) {
-            robot2.hp -= tempRoboOneDmg;
-        }
-        if (tempRoboTwoDmg > 0) {
-            robot1.hp -= tempRoboTwoDmg;
-        }
-
-        if (checkWin(robot1, robot2)) {
-            checkWinner(robot1, robot2, player1, player2);
-        } else {
-            System.out.println("But no one won");
-            SkillPoints.printStats(robot1, robot2, player1, player2);
-            robot1.x = robot1.x - 1;
-            robot1.y = robot1.y - 1;
-            robot2.x = robot2.x + 1;
-            robot2.y = robot2.y + 1;
-        }
-    }
-
-    //-------------------------------------------------------------------Überprüfen OB es einen Gewinner gibt--------------------------------------------------------------------
-    public static boolean checkWin(Robot robot1, Robot robot2) {
-        return robot1.hp <= 0 || robot2.hp <= 0;
-    }
-
-    //----------------------------------------------------------------------Prüfen WER gewonnen hat-------------------------------------------------------------------------------
-    public static String checkWinner(Robot robot1, Robot robot2, Player player1, Player player2) {
-        String winner = "";
-        if (robot1.hp <= 0 && robot2.hp <= 0) {
-            winner = "U both died lmao";
-        } else if (robot1.hp <= 0) {
-            winner = player2.playerName;
-        } else if (robot2.hp <= 0) {
-            winner = player1.playerName;
-        }
-        return winner;
     }
 }
 
