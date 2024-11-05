@@ -11,7 +11,7 @@ public class Fight {
 
     //------------------------------------------------------------------------Kampfablauf--------------------------------------------------------------------------------------------
     public static void fight(Robot robot1, Robot robot2, Player player1, Player player2) {
-        System.out.println("ES KOMMT ZU EINEM SPANNENDEN KAMPF DE LA ROBOTS");
+        System.out.println("ES KOMMT ZU EINEM SPANNENDEN KAMPF DER ROBOTS");
         int tempRoboOneDmg = robot1.damage;
         int tempRoboTwoDmg = robot2.damage;
 
