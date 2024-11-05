@@ -8,6 +8,7 @@ public class RobotWars {
         Player player2 = new Player();
         Robot robot1 = new Robot(1, 1);
         Robot robot2 = new Robot(15, 15);
+        Board board = new Board();
 
         //-----------------------------------------------------------------Namen & Avatar der Spieler-------------------------------------------------------------------------------------
         System.out.println("Spieler 1: ");

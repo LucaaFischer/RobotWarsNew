@@ -10,38 +10,56 @@ public class Game {
 
     //----------------------------------------------------------------------------------Spielzüge--------------------------------------------------------------------------------------
     public static void turn(Robot robot1, Robot robot2, Player player1, Player player2) {
-        Board board = new Board();
-
+        int movementThisRound = 0;
 
         if (countTurns % 2 == 0) {
+            movementThisRound = robot1.movement;
+
             System.out.println(player1.playerName + " ist dran!");
-            do {
-                robot1.getMove();
-            } while (!moveValid(robot1, robot2));
+
+            while (movementThisRound > 0) {
+                System.out.println("Du kannst dich noch " + movementThisRound + " mal bewegen, " + player1.playerName + "!");
+                do {
+                    robot1.getMove();
+                } while (!moveValid(robot1, robot2));
+
+                movementThisRound--;
+                tempRoboOneX = robot1.x;
+                tempRoboOneY = robot1.y;
+                Board.drawBoard(robot1, robot2, player1, player2);
+            }
 
             player1.skillPoints++;
+
         } else {
+            movementThisRound = robot2.movement;
+
             System.out.println(player2.playerName + " ist dran!");
+
+            while (movementThisRound > 0) {
+            System.out.println("Du kannst dich noch " + movementThisRound + " mal bewegen, " + player2.playerName + "!");
             do {
                 robot2.getMove();
             } while (!moveValid(robot1, robot2));
 
+                movementThisRound--;
+                tempRoboTwoX = robot2.x;
+                tempRoboTwoY = robot2.y;
+                Board.drawBoard(robot1, robot2, player1, player2);
+            }
+
             player2.skillPoints++;
         }
+
         if (checkFight(robot1, robot2)) {
             fight(robot1, robot2, player1, player2);
         }
-
-        board.drawBoard(robot1, robot2, player1, player2);
 
         if (countTurns % 2 != 0) {
             System.out.println("Ende der Runde. Nutzt eure Skillpoints!");
             SkillPoints.useSkillPoints(player1, player2, robot1, robot2);
         }
-        tempRoboOneX = robot1.x;
-        tempRoboOneY = robot1.y;
-        tempRoboTwoX = robot2.x;
-        tempRoboTwoY = robot2.y;
+
         countTurns++;
     }
 
@@ -50,8 +68,8 @@ public class Game {
         if (robot1.x > 15 || robot1.y > 15 || robot1.x < 1 || robot1.y < 1 || robot2.x > 15 || robot2.y > 15 || robot2.x < 1 || robot2.y < 1) {
             System.out.println("Zug außerhalb des Spielfelds! Mach nochmal.");
             return false;
-        } else if (robot1.x > tempRoboOneX + robot1.movement || robot1.y > tempRoboOneY + robot1.movement || robot1.x < tempRoboOneX - robot1.movement || robot1.y < tempRoboOneY - robot1.movement
-                || robot2.x > tempRoboTwoX + robot2.movement || robot2.y > tempRoboTwoY + robot2.movement || robot2.x < tempRoboTwoX - robot2.movement || robot2.y < tempRoboTwoY - robot2.movement) {
+        } else if (robot1.x > tempRoboOneX + 1 || robot1.y > tempRoboOneY + 1 || robot1.x < tempRoboOneX - 1 || robot1.y < tempRoboOneY - 1
+                || robot2.x > tempRoboTwoX + 1 || robot2.y > tempRoboTwoY + 1 || robot2.x < tempRoboTwoX - 1 || robot2.y < tempRoboTwoY - 1) {
             System.out.println("Zug nicht möglich! Mach nochmal.");
             return false;
         } else {
