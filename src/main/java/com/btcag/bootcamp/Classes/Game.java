@@ -24,7 +24,7 @@ public class Game {
                 robotTurn.getMove();
             } while (!moveValid(robotTurn, robotNotTurn));
 
-            if(Fight.inRange(robotTurn, robotNotTurn)) {
+            if (Fight.inRange(robotTurn, robotNotTurn)) {
                 System.out.println("Du befindest dich in Angriffsreichweite! (Ein Angriff beendet deinen Zug.)");
                 System.out.println("1 --> ANGRIFF!");
                 int attack = input.nextInt();
@@ -47,7 +47,7 @@ public class Game {
 
     //----------------------------------------------------------------Überprüfung auf Möglichkeit des Zuges------------------------------------------------------------------------------
     public static boolean moveValid(Robot robotTurn, Robot robotNotTurn) {
-        if (robotTurn.x > 15 || robotTurn.y > 15 || robotTurn.x < 1 || robotTurn.y < 1){
+        if (robotTurn.x > 15 || robotTurn.y > 15 || robotTurn.x < 1 || robotTurn.y < 1) {
             System.out.println("Zug außerhalb des Spielfelds! Mach nochmal.");
             return false;
         } else if (robotTurn.x > tempRobotTurnX + 1 || robotTurn.y > tempRobotTurnY + 1 || robotTurn.x < tempRobotTurnX - 1 || robotTurn.y < tempRobotTurnY - 1) {

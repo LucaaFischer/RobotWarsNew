@@ -49,12 +49,12 @@ public class Fight {
         }
     }
 
-    //-------------------------------------------------------------------Überprüfen OB es einen Gewinner gibt--------------------------------------------------------------------
+    //------------------------------------------------------------Überprüfen OB es einen Gewinner gibt--------------------------------------------------------------------
     public static boolean checkWin(Robot robot1, Robot robot2) {
         return robot1.hp <= 0 || robot2.hp <= 0;
     }
 
-    //----------------------------------------------------------------------Prüfen WER gewonnen hat-------------------------------------------------------------------------------
+    //----------------------------------------------------------------Prüfen WER gewonnen hat-------------------------------------------------------------------------------
     public static String checkWinner(Robot robot1, Robot robot2, Player player1, Player player2) {
         String winner = "";
         if (robot1.hp <= 0 && robot2.hp <= 0) {
