@@ -3,10 +3,10 @@ package com.btcag.bootcamp.Classes;
 import java.util.Scanner;
 
 public class Player {
-    Scanner input = new Scanner(System.in);
-    String playerName = "";
-    String playerAvatar = "";
-    int skillPoints = 2;
+    private final Scanner input = new Scanner(System.in);
+    protected String playerName = "";
+    protected String playerAvatar = "";
+    protected int skillPoints = 2;
 
     // ---------------------------------------------------------------- ---------Namenseingabe------------------------------------------------------------------------------------------
     public void getName() {

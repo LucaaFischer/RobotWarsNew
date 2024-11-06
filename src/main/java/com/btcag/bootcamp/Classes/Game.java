@@ -21,20 +21,23 @@ public class Game {
             System.out.println(STR."Du kannst dich noch \{movementThisRound} mal bewegen, \{playerTurn.playerName}!");
 
             do {
-                robotTurn.getMove();
-            } while (!moveValid(robotTurn, robotNotTurn));
+                if(!Fight.inRange(robotTurn, robotNotTurn)) {
+                    robotTurn.getMove();
 
-            if (Fight.inRange(robotTurn, robotNotTurn)) {
-                System.out.println("Du befindest dich in Angriffsreichweite! (Ein Angriff beendet deinen Zug.)");
-                System.out.println("1 --> ANGRIFF!");
-                int attack = input.nextInt();
-                if (attack == 1) {
-                    Fight.fight(robotTurn, robotNotTurn, playerTurn, playerNotTurn);
-                    movementThisRound = 0;
                 } else {
-                    System.out.println("Angst oder wat?");
+                    System.out.println("Du befindest dich in Angriffsreichweite! (Ein Angriff beendet deinen Zug.)");
+                    System.out.println("1 --> ANGRIFF!");
+                    int attack = input.nextInt();
+                    if (attack == 1) {
+                        Fight.fight(robotTurn, robotNotTurn, playerTurn, playerNotTurn);
+                        movementThisRound = 0;
+                    } else {
+                        System.out.println("Angst oder wat?");
+                        robotTurn.getMove();
+                    }
                 }
-            }
+
+            } while (!moveValid(robotTurn, robotNotTurn));
 
             tempRobotTurnX = robotTurn.x;
             tempRobotTurnY = robotTurn.y;

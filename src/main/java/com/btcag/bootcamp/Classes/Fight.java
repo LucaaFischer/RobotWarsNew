@@ -10,42 +10,27 @@ public class Fight {
     }
 
     //------------------------------------------------------------------------Kampfablauf--------------------------------------------------------------------------------------------
-    public static void fight(Robot robot1, Robot robot2, Player player1, Player player2) {
-        System.out.println("ES KOMMT ZU EINEM SPANNENDEN KAMPF DER ROBOTS");
-        int tempRoboOneDmg = robot1.damage;
-        int tempRoboTwoDmg = robot2.damage;
+    public static void fight(Robot robotTurn, Robot robotNotTurn, Player playerTurn, Player playerNotTurn) {
+        System.out.println("DU GREIFST DEINEN GEGNER AN!");
 
-        tempRoboTwoDmg -= robot1.shield;
-        tempRoboOneDmg -= robot2.shield;
+        int tempRoboDmg = robotTurn.damage;
+        tempRoboDmg -= robotNotTurn.shield;
 
-
-        if (robot2.shield > robot1.damage) {
-            robot2.shield -= robot1.damage;
+        if (robotNotTurn.shield > robotTurn.damage) {
+            robotNotTurn.shield -= robotTurn.damage;
         } else {
-            robot2.shield = 0;
-        }
-        if (robot1.shield > robot2.damage) {
-            robot1.shield -= robot2.damage;
-        } else {
-            robot1.shield = 0;
+            robotNotTurn.shield = 0;
         }
 
-        if (tempRoboOneDmg > 0) {
-            robot2.hp -= tempRoboOneDmg;
-        }
-        if (tempRoboTwoDmg > 0) {
-            robot1.hp -= tempRoboTwoDmg;
+        if (tempRoboDmg > 0) {
+            robotNotTurn.hp -= tempRoboDmg;
         }
 
-        if (checkWin(robot1, robot2)) {
-            checkWinner(robot1, robot2, player1, player2);
+        if (checkWin(robotTurn, robotNotTurn)) {
+            checkWinner(robotTurn, robotNotTurn, playerTurn, playerNotTurn);
         } else {
             System.out.println("But no one won");
-            SkillPoints.printStats(robot1, robot2, player1, player2);
-            robot1.x = robot1.x - 1;
-            robot1.y = robot1.y - 1;
-            robot2.x = robot2.x + 1;
-            robot2.y = robot2.y + 1;
+            SkillPoints.printStats(robotTurn, robotNotTurn, playerTurn, playerNotTurn);
         }
     }
 

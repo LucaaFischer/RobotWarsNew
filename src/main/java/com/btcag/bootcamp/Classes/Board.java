@@ -1,7 +1,7 @@
 package com.btcag.bootcamp.Classes;
 
 public class Board {
-    public static void drawBoard(Robot robot1, Robot robot2, Player player1, Player player2) {
+    protected static void drawBoard(Robot robot1, Robot robot2, Player player1, Player player2) {
         int y = 1;
         int x = 1;
         while (y <= 15) {

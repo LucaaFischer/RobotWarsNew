@@ -5,16 +5,16 @@ import java.util.Scanner;
 public class Robot {
     //---------------------------------------------------------------------Erstellen des Standard Roboters----------------------------------------------------------------------------
     Scanner input = new Scanner(System.in);
-    int x;
-    int y;
-    int hp = 1;
-    int energy = 1;
-    int damage = 1;
-    int shield = 1;
-    int range = 1;
-    int aoe = 1;
-    int accuracy = 1;
-    int movement = 3;
+    protected int x;
+    protected int y;
+    protected int hp = 1;
+    protected int energy = 1;
+    protected int damage = 1;
+    protected int shield = 1;
+    protected int range = 1;
+    protected int aoe = 1;
+    protected int accuracy = 1;
+    protected int movement = 3;
 
     public Robot(int x, int y) {
         this.x = x;
