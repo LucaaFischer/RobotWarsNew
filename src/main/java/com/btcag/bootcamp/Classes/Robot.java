@@ -23,12 +23,12 @@ public class Robot {
 
     //------------------------------------------------------------------------Spieler den Roboter platzieren lassen-----------------------------------------------------------------
     public void getMove() {
-        System.out.println("Wo möchtest du deinen Roboter platzieren? x-Koordinate:");
+        System.out.println("Wo möchtest du deinen Roboter platzieren? Y-Koordinate:");
         this.x = input.nextInt();
-        System.out.println("Und die Y-Koordinate?");
+        System.out.println("Und die X-Koordinate?");
         this.y = input.nextInt();
 
-        input.nextLine();
+        input.nextLine(); // Scanner muss leer sein, damit beim ersten setStats() Durchlauf nicht direkt Default Wert ausgeführt wird lol
     }
 
     //-------------------------------------------------------------------Spieler die Stats für Robo festlegen lassen---------------------------------------------------------------

@@ -3,9 +3,24 @@ package com.btcag.bootcamp.Classes;
 public class Board {
     protected static void drawBoard(Robot robot1, Robot robot2, Player player1, Player player2) {
         int y = 1;
-        int x = 1;
+        System.out.print("      ");
+        for (int i = 1; i <= 15; i++) {
+            String xOut;
+            xOut = String.valueOf(i);
+            while (xOut.length() < 7) {
+                xOut += " ";
+            }
+            System.out.print(xOut);
+        }
+        System.out.println();
+        String yOut = "";
         while (y <= 15) {
-            x = 1;
+            yOut = String.valueOf(y);
+            while (yOut.length() < 3) {
+                yOut += " ";
+            }
+            System.out.print(yOut);
+            int x = 1;
             while (x <= 15) {
                 if (x == robot1.x && y == robot1.y) {
                     System.out.print(STR." [ \{player1.playerAvatar} ] ");

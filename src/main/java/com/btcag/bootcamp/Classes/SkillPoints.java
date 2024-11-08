@@ -3,7 +3,7 @@ package com.btcag.bootcamp.Classes;
 public class SkillPoints {
     //---------------------------------------------------------------------Skillpoints in Stats stecken----------------------------------------------------------------------------
     public static void useSkillPoints(Player player1, Player player2, Robot robot1, Robot robot2) {
-        if (!Fight.inRange(robot1, robot2)) {
+        if (!Validations.inRange(robot1, robot2)) {
             while (player1.skillPoints > 0) {
                 System.out.println(STR."Du hast noch \{player1.skillPoints} Skillpoint(s), \{player1.playerName}");
                 robot1.setStats();

@@ -21,7 +21,7 @@ public class Game {
             System.out.println(STR."Du kannst dich noch \{movementThisRound} mal bewegen, \{playerTurn.playerName}!");
 
             do {
-                if(!Fight.inRange(robotTurn, robotNotTurn)) {
+                if(!Validations.inRange(robotTurn, robotNotTurn)) {
                     robotTurn.getMove();
 
                 } else {
@@ -37,7 +37,7 @@ public class Game {
                     }
                 }
 
-            } while (!moveValid(robotTurn, robotNotTurn));
+            } while (!Validations.moveValid(robotTurn, robotNotTurn));
 
             tempRobotTurnX = robotTurn.x;
             tempRobotTurnY = robotTurn.y;
@@ -46,22 +46,6 @@ public class Game {
         }
 
         playerTurn.skillPoints++;
-    }
-
-    //----------------------------------------------------------------Überprüfung auf Möglichkeit des Zuges------------------------------------------------------------------------------
-    public static boolean moveValid(Robot robotTurn, Robot robotNotTurn) {
-        if (robotTurn.x > 15 || robotTurn.y > 15 || robotTurn.x < 1 || robotTurn.y < 1) {
-            System.out.println("Zug außerhalb des Spielfelds! Mach nochmal.");
-            return false;
-        } else if (robotTurn.x > tempRobotTurnX + 1 || robotTurn.y > tempRobotTurnY + 1 || robotTurn.x < tempRobotTurnX - 1 || robotTurn.y < tempRobotTurnY - 1) {
-            System.out.println("Zug nicht möglich! Mach nochmal.");
-            return false;
-        } else if (robotTurn.x == robotNotTurn.x && robotTurn.y == robotNotTurn.y) {
-            System.out.println("Du darfst nicht auf dem gleichen Feld wie dein Gegner stehen! Mach nochmal.");
-            return false;
-        } else {
-            return true;
-        }
     }
 }
 
