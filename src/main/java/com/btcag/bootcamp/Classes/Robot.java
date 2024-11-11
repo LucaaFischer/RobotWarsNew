@@ -66,6 +66,7 @@ public class Robot {
                 setStats();
                 break;
         }
+
     }
 }
 

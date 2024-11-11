@@ -1,4 +1,4 @@
-package com.btcag.bootcamp.Classes;
+package com.btcag.bootcamp.Classes.Enums;
 
 public enum Colors {
     RED("\u001b[31;1m1"),

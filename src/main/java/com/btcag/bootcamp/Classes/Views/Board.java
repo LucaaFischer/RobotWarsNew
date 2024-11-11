@@ -1,4 +1,7 @@
-package com.btcag.bootcamp.Classes;
+package com.btcag.bootcamp.Classes.Views;
+
+import com.btcag.bootcamp.Classes.Models.Player;
+import com.btcag.bootcamp.Classes.Robot;
 
 public class Board {
     protected static void drawBoard(Robot robot1, Robot robot2, Player player1, Player player2) {

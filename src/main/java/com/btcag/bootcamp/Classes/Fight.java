@@ -1,5 +1,8 @@
 package com.btcag.bootcamp.Classes;
 
+import com.btcag.bootcamp.Classes.Models.Player;
+import com.btcag.bootcamp.Classes.Views.PrintStatsView;
+
 public class Fight {
 
     //------------------------------------------------------------------------Kampfablauf--------------------------------------------------------------------------------------------
@@ -23,7 +26,7 @@ public class Fight {
             checkWinner(robotTurn, robotNotTurn, playerTurn, playerNotTurn);
         } else {
             System.out.println("But no one won");
-            SkillPoints.printStats(robotTurn, robotNotTurn, playerTurn, playerNotTurn);
+            PrintStatsView.printStats(robotTurn, robotNotTurn, playerTurn, playerNotTurn);
         }
     }
 
