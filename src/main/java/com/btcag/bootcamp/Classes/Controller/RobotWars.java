@@ -3,6 +3,7 @@ package com.btcag.bootcamp.Classes.Controller;
 
 import com.btcag.bootcamp.Classes.Models.Player;
 import com.btcag.bootcamp.Classes.Models.Robot;
+import com.btcag.bootcamp.Classes.Views.AskForPlayerView;
 import com.btcag.bootcamp.Classes.Views.Intro;
 import com.btcag.bootcamp.Classes.Views.PrintOutWinnerView;
 
@@ -13,9 +14,9 @@ public class RobotWars {
         Robot robot1 = new Robot(1, 1);
         Robot robot2 = new Robot(15, 15);
 
-        player1.setName();
+        player1.setName(AskForPlayerView.askForName());
         player1.setAvatar();
-        player2.setName();
+        player2.setName(AskForPlayerView.askForName());
         player2.setAvatar();
 
         Intro.intro(player1, player2);

@@ -8,11 +8,12 @@ public class Player {
     private final Scanner input = new Scanner(System.in);
     private String playerName = "";
     private String playerAvatar = "";
+    String password = "";
     public int skillPoints = 2;
 
     // ---------------------------------------------------------------- ---------Namenseingabe------------------------------------------------------------------------------------------
-    public void setName() {
-            this.playerName = AskForPlayerView.askForNames();
+    public void setName(String username) {
+            this.playerName = username;
     }
 
     public String getName() {
@@ -24,6 +25,10 @@ public class Player {
     }
     //----------------------------------------------------------------------------Avatarerstellung--------------------------------------------------------------------------------------
     public void setAvatar() {
-        this.playerAvatar = AskForPlayerView.askForAvatars();
+        this.playerAvatar = AskForPlayerView.askForAvatar();
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
