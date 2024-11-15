@@ -1,4 +1,4 @@
-package com.btcag.bootcamp.Classes;
+package com.btcag.bootcamp.Classes.Models;
 
 import java.util.Scanner;
 
@@ -22,7 +22,7 @@ public class Robot {
     }
 
     //------------------------------------------------------------------------Spieler den Roboter platzieren lassen-----------------------------------------------------------------
-    public void getMove() {
+    public void setMove() {
         System.out.println("Wo möchtest du deinen Roboter platzieren? Y-Koordinate:");
         this.x = input.nextInt();
         System.out.println("Und die X-Koordinate?");
@@ -67,6 +67,54 @@ public class Robot {
                 break;
         }
 
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public int getEnergy() {
+        return energy;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public int getShield() {
+        return shield;
+    }
+
+    public int getAoe() {
+        return aoe;
+    }
+
+    public int getRange() {
+        return range;
+    }
+
+    public int getAccuracy() {
+        return accuracy;
+    }
+
+    public int getMovement() {
+        return movement;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public void setShield(int shield) {
+        this.shield = shield;
     }
 }
 

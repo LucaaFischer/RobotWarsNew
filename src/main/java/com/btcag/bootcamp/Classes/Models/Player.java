@@ -6,17 +6,21 @@ import java.util.Scanner;
 
 public class Player {
     private final Scanner input = new Scanner(System.in);
-    protected String playerName = "";
-    protected String playerAvatar = "";
-    protected int skillPoints = 2;
+    private String playerName = "";
+    private String playerAvatar = "";
+    public int skillPoints = 2;
 
     // ---------------------------------------------------------------- ---------Namenseingabe------------------------------------------------------------------------------------------
     public void setName() {
             this.playerName = AskForPlayerView.askForNames();
     }
 
-    public void getName() {
-        
+    public String getName() {
+        return playerName;
+    }
+
+    public String getAvatar() {
+        return playerAvatar;
     }
     //----------------------------------------------------------------------------Avatarerstellung--------------------------------------------------------------------------------------
     public void setAvatar() {

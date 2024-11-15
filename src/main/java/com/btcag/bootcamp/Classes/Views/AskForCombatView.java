@@ -1,9 +1,9 @@
 package com.btcag.bootcamp.Classes.Views;
 
-import com.btcag.bootcamp.Classes.Fight;
-import com.btcag.bootcamp.Classes.Game;
+import com.btcag.bootcamp.Classes.Controller.FightController;
+import com.btcag.bootcamp.Classes.Controller.GameController;
 import com.btcag.bootcamp.Classes.Models.Player;
-import com.btcag.bootcamp.Classes.Robot;
+import com.btcag.bootcamp.Classes.Models.Robot;
 
 import java.util.Scanner;
 
@@ -16,11 +16,11 @@ public class AskForCombatView {
 
         int attack = input.nextInt();
         if (attack == 1) {
-            Fight.fight(robotTurn, robotNotTurn, playerTurn, playerNotTurn);
-            Game.movementThisRound = 0;
+            FightController.fight(robotTurn, robotNotTurn, playerTurn, playerNotTurn);
+            GameController.movementThisRound = 0;
         } else {
             System.out.println("Angst oder wat?");
-            robotTurn.getMove();
+            robotTurn.setMove();
         }
     }
 }

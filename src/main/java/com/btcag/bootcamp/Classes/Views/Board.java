@@ -1,10 +1,10 @@
 package com.btcag.bootcamp.Classes.Views;
 
 import com.btcag.bootcamp.Classes.Models.Player;
-import com.btcag.bootcamp.Classes.Robot;
+import com.btcag.bootcamp.Classes.Models.Robot;
 
 public class Board {
-    protected static void drawBoard(Robot robot1, Robot robot2, Player player1, Player player2) {
+    public static void drawBoard(Robot robot1, Robot robot2, Player player1, Player player2) {
         int y = 1;
         System.out.print("      ");
         for (int i = 1; i <= 15; i++) {
@@ -25,10 +25,10 @@ public class Board {
             System.out.print(yOut);
             int x = 1;
             while (x <= 15) {
-                if (x == robot1.x && y == robot1.y) {
-                    System.out.print(STR." [ \{player1.playerAvatar} ] ");
-                } else if (x == robot2.x && y == robot2.y) {
-                    System.out.print(STR." [ \{player2.playerAvatar} ]");
+                if (x == robot1.getX() && y == robot1.getY()) {
+                    System.out.print(STR." [ \{player1.getAvatar()} ] ");
+                } else if (x == robot2.getX() && y == robot2.getY()) {
+                    System.out.print(STR." [ \{player2.getAvatar()} ]");
                 } else {
                     System.out.print(" [   ] ");
                 }
@@ -38,7 +38,7 @@ public class Board {
             System.out.println();
             y++;
         }
-        System.out.println(STR."\{player1.playerName}'s Roboter (\{player1.playerAvatar}) befindet sich auf Feld x \{robot1.x} y \{robot1.y}.");
-        System.out.println(STR."\{player2.playerName}'s Roboter (\{player2.playerAvatar}) befindet sich auf Feld x \{robot2.x} y \{robot2.y}.");
+        System.out.println(STR."\{player2.getName()}'s Roboter (\{player2.getAvatar()}) befindet sich auf Feld x \{robot2.getX()} y \{robot2.getY()}.");
+        System.out.println(STR."\{player1.getName()}'s Roboter (\{player1.getAvatar()}) befindet sich auf Feld x \{robot1.getX()} y \{robot1.getY()}.");
     }
 }

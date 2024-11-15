@@ -1,10 +1,12 @@
-package com.btcag.bootcamp.Classes;
+package com.btcag.bootcamp.Classes.Controller;
 
 import com.btcag.bootcamp.Classes.Models.Player;
+import com.btcag.bootcamp.Classes.Models.Robot;
 import com.btcag.bootcamp.Classes.Views.AskForCombatView;
 import com.btcag.bootcamp.Classes.Views.Board;
+import com.btcag.bootcamp.Classes.Views.GameView;
 
-public class Game {
+public class GameController {
     //---------------------------------------------------------------------------Startpositionen für die Roboter------------------------------------------------------------------
     public static int countTurns = 0;
     public static int tempRobotTurnX;
@@ -13,18 +15,18 @@ public class Game {
 
     //----------------------------------------------------------------------------------Spielzüge--------------------------------------------------------------------------------------
     public static void turn(Robot robotTurn, Robot robotNotTurn, Player playerTurn, Player playerNotTurn) {
-        movementThisRound = robotTurn.movement;
-        tempRobotTurnX = robotTurn.x;
-        tempRobotTurnY = robotTurn.y;
+        movementThisRound = robotTurn.getMovement();
+        tempRobotTurnX = robotTurn.getX();
+        tempRobotTurnY = robotTurn.getY();
 
-        System.out.println(STR."\{playerTurn.playerName} ist dran!");
+        GameView.playerTurnMessage(playerTurn);
 
-        while (movementThisRound > 0 && !Fight.checkWin(robotTurn, robotNotTurn)) {
-            System.out.println(STR."Du kannst dich noch \{movementThisRound} mal bewegen, \{playerTurn.playerName}!");
+        while (movementThisRound > 0 && !FightController.checkWin(robotTurn, robotNotTurn)) {
+            GameView.movementLeftMessage(playerTurn);
 
             do {
                 if(!Validations.inRange(robotTurn, robotNotTurn)) {
-                    robotTurn.getMove();
+                    robotTurn.setMove();
 
                 } else {
                     AskForCombatView.askForCombat(robotTurn, robotNotTurn, playerTurn, playerNotTurn);
@@ -32,8 +34,8 @@ public class Game {
 
             } while (!Validations.moveValid(robotTurn, robotNotTurn));
 
-            tempRobotTurnX = robotTurn.x;
-            tempRobotTurnY = robotTurn.y;
+            tempRobotTurnX = robotTurn.getX();
+            tempRobotTurnY = robotTurn.getY();
             movementThisRound--;
             Board.drawBoard(robotTurn, robotNotTurn, playerTurn, playerNotTurn);
         }

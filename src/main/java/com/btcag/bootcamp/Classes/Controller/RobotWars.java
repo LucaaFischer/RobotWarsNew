@@ -1,8 +1,8 @@
 package com.btcag.bootcamp.Classes.Controller;
 
 
-import com.btcag.bootcamp.Classes.*;
 import com.btcag.bootcamp.Classes.Models.Player;
+import com.btcag.bootcamp.Classes.Models.Robot;
 import com.btcag.bootcamp.Classes.Views.Intro;
 import com.btcag.bootcamp.Classes.Views.PrintOutWinnerView;
 
@@ -20,20 +20,20 @@ public class RobotWars {
 
         Intro.intro(player1, player2);
 
-        UseSkillPoints.useStartSkillPoints(player1, player2, robot1, robot2);
+        UseSkillPointsController.StartSkillPoints(player1, player2, robot1, robot2);
 
-        while (!Fight.checkWin(robot1, robot2)) {
-            if (Game.countTurns % 2 == 0) {
-                Game.turn(robot1, robot2, player1, player2);
+        while (!FightController.checkWin(robot1, robot2)) {
+            if (GameController.countTurns % 2 == 0) {
+                GameController.turn(robot1, robot2, player1, player2);
 
             } else {
-                Game.turn(robot2, robot1, player2, player1);
+                GameController.turn(robot2, robot1, player2, player1);
 
-                if (!Fight.checkWin(robot2, robot1)) {
-                    SkillPoints.skillPointController(player1, player2, robot1, robot2);
+                if (!FightController.checkWin(robot2, robot1)) {
+                    UseSkillPointsController.EndOfRoundSkillPoints(player1, player2, robot1, robot2);
                 }
             }
-            Game.countTurns++;
+            GameController.countTurns++;
         }
         PrintOutWinnerView.printWinner(player1, player2, robot1, robot2);
     }
