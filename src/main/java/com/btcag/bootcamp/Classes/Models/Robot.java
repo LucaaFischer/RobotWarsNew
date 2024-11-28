@@ -40,29 +40,17 @@ public class Robot {
             case "hp":
                 this.hp++;
                 break;
-            case "energy":
-                this.energy++;
-                break;
             case "damage":
                 this.damage++;
                 break;
-            case "shield":
-                this.shield++;
-                break;
             case "range":
                 this.range++;
-                break;
-            case "aoe":
-                this.aoe++;
-                break;
-            case "accuracy":
-                this.accuracy++;
                 break;
             case "movement":
                 this.movement++;
                 break;
             default:
-                System.out.println("Ungültiger Stat. Mach nochmal!");
+                System.out.println("Invalid Stat! Du kannst nur HP, AD, Movement und Range anpassen.");
                 setStats();
                 break;
         }
