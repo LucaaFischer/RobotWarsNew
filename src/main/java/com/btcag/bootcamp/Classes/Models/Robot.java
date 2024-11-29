@@ -15,6 +15,9 @@ public class Robot {
     protected int aoe = 1;
     protected int accuracy = 1;
     protected int movement = 3;
+    protected boolean hasDMGItem;
+    protected boolean hasRangeItem;
+    protected boolean hasMovementItem;
 
     public Robot(int x, int y) {
         this.x = x;
@@ -97,8 +100,44 @@ public class Robot {
         return y;
     }
 
+    public boolean getHasDMGItem() {
+        return hasDMGItem;
+    }
+
+    public void setHasDMGItem(boolean dmgItem) {
+        hasDMGItem = dmgItem;
+    }
+
+    public boolean getHasRangeItem() {
+        return hasRangeItem;
+    }
+
+    public void setHasRangeItem(boolean rangeItem) {
+        hasRangeItem = rangeItem;
+    }
+
+    public boolean getHasMovementItem() {
+        return hasMovementItem;
+    }
+
+    public void setHasMovementItem(boolean movementItem) {
+        hasMovementItem = movementItem;
+    }
+
     public void setHp(int hp) {
         this.hp = hp;
+    }
+
+    public void setMovement(int movement) {
+        this.movement = movement;
+    }
+
+    public void setRange(int range) {
+        this.range = range;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
     }
 
     public void setShield(int shield) {

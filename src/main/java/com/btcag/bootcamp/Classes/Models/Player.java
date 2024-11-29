@@ -5,7 +5,6 @@ import com.btcag.bootcamp.Classes.Views.AskForPlayerView;
 import java.util.Scanner;
 
 public class Player {
-    private final Scanner input = new Scanner(System.in);
     private String playerName = "";
     private String playerAvatar = "";
     String password = "";

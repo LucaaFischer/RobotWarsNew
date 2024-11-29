@@ -1,10 +1,14 @@
 package com.btcag.bootcamp.Classes.Views;
 
-import com.btcag.bootcamp.Classes.Models.Player;
-import com.btcag.bootcamp.Classes.Models.Robot;
+import com.btcag.bootcamp.Classes.Models.*;
 
 public class Board {
     public static void drawBoard(Robot robot1, Robot robot2, Player player1, Player player2) {
+        Items item1 = ChooseRandItem.randomizer();
+        Items item2 = ChooseRandItem.randomizer();
+        Items item3 = ChooseRandItem.randomizer();
+        Items item4 = ChooseRandItem.randomizer();
+
         int y = 1;
         System.out.print("      ");
         for (int i = 1; i <= 15; i++) {
@@ -28,7 +32,15 @@ public class Board {
                 if (x == robot1.getX() && y == robot1.getY()) {
                     System.out.print(STR." [ \{player1.getAvatar()} ] ");
                 } else if (x == robot2.getX() && y == robot2.getY()) {
-                    System.out.print(STR." [ \{player2.getAvatar()} ]");
+                    System.out.print(STR." [ \{player2.getAvatar()} ] ");
+                } else if(x == item1.xCoordinate() && y == item1.yCoordinate()) {
+                    System.out.print(STR." [ \{item1.iconOnMap} ] ");
+                } else if(x == item2.xCoordinate() && y == item2.yCoordinate()) {
+                    System.out.print(STR." [ \{item2.iconOnMap} ] ");
+                } else if(x == item3.xCoordinate() && y == item3.yCoordinate()) {
+                    System.out.print(STR." [ \{item3.iconOnMap} ] ");
+                } else if(x == item4.xCoordinate() && y == item4.yCoordinate()) {
+                    System.out.print(STR." [ \{item4.iconOnMap} ] ");
                 } else {
                     System.out.print(" [   ] ");
                 }
