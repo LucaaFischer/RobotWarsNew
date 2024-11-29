@@ -143,5 +143,13 @@ public class Robot {
     public void setShield(int shield) {
         this.shield = shield;
     }
+
+    public static void pickUpItem(Items[] items, Robot robot) {
+        for(Items item : items) {
+            if (robot.getX() == item.getItemX() && robot.getY() == item.getItemY()) {
+                item.changeStat(robot);
+            }
+        }
+    }
 }
 

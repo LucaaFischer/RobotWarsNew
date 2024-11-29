@@ -4,15 +4,22 @@ import java.util.Random;
 
 public class RangeItem extends Items{
     static Random rand = new Random();
+    int x = rand.nextInt(5, 8);
+    int y = rand.nextInt(5, 8);
 
     @Override
-    public int xCoordinate() {
-        return rand.nextInt(6,8);
+    public int getItemX() {
+        return x;
     }
 
     @Override
-    public int yCoordinate() {
-        return rand.nextInt(6,8);
+    public int getItemY() {
+        return y;
+    }
+
+    @Override
+    public int duration() {
+        return super.duration();
     }
 
     @Override
@@ -31,18 +38,6 @@ public class RangeItem extends Items{
     public void defineItem() {
         String itemName = "Range Item";
         char iconOnMap = super.iconOnMap;
-    }
-
-    @Override
-    public boolean pickUpItem(Robot robot) {
-        return (robot.getX() == xCoordinate() && robot.getY() == yCoordinate());
-    }
-
-    @Override
-    void isActive(Robot robot) {
-        if (pickUpItem(robot)) {
-            robot.setHasRangeItem(true);
-        }
     }
 
     @Override

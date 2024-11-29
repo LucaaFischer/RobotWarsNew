@@ -1,6 +1,8 @@
 package com.btcag.bootcamp.Classes.Controller;
 
 
+import com.btcag.bootcamp.Classes.Models.ChooseRandItem;
+import com.btcag.bootcamp.Classes.Models.Items;
 import com.btcag.bootcamp.Classes.Models.Player;
 import com.btcag.bootcamp.Classes.Models.Robot;
 import com.btcag.bootcamp.Classes.Views.AskForPlayerView;

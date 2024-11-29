@@ -1,32 +1,29 @@
 package com.btcag.bootcamp.Classes.Models;
 
 public abstract class Items {
-    int itemValue() {
-        return 0;
-    };
+    int x;
+    int y;
 
-    public int xCoordinate(){
+    int itemValue() {
         return 0;
     }
 
-    public int yCoordinate(){
-        return 0;
+    public int getItemX() {
+        return x;
+    }
+
+    public int getItemY() {
+        return y;
     }
 
     public int duration() {
-        return 0;
+        return 2;
     }
-
-    boolean pickUpItem(Robot robot){
-        return false;
-    };
-
-    void isActive(Robot robot) {};
 
     public char iconOnMap = 63;
 
-    void defineItem(){};
+    void defineItem(){}
 
-    void changeStat(Robot robot){};
+    public void changeStat(Robot robot){}
 
 }
