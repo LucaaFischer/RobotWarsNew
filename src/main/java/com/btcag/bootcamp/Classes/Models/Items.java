@@ -1,12 +1,17 @@
 package com.btcag.bootcamp.Classes.Models;
 
 public abstract class Items {
+
+    String itemName;
     int x;
     int y;
+    int duration;
 
-    int itemValue() {
-        return 0;
-    }
+    public abstract String getItemName();
+
+    public void generatePosition(Items[] items) {}
+
+    public abstract int itemValue();
 
     public int getItemX() {
         return x;
@@ -16,13 +21,11 @@ public abstract class Items {
         return y;
     }
 
-    public int duration() {
-        return 2;
-    }
+    public abstract int getDuration();
 
-    public char iconOnMap = 63;
+    public void setDuration(int duration) {}
 
-    void defineItem(){}
+    public abstract boolean wasPickedUp(Robot robot1);
 
     public void changeStat(Robot robot){}
 

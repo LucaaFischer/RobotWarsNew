@@ -1,5 +1,8 @@
 package com.btcag.bootcamp.Classes.Models;
 
+import com.btcag.bootcamp.Classes.Views.PickUpItemMessage;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Robot {
@@ -8,16 +11,14 @@ public class Robot {
     protected int x;
     protected int y;
     protected int hp = 1;
-    protected int energy = 1;
     protected int damage = 1;
-    protected int shield = 1;
     protected int range = 1;
-    protected int aoe = 1;
-    protected int accuracy = 1;
+    protected int shield = 1;
     protected int movement = 3;
     protected boolean hasDMGItem;
     protected boolean hasRangeItem;
     protected boolean hasMovementItem;
+    ArrayList<Items> itemsOnRobot = new ArrayList<>();
 
     public Robot(int x, int y) {
         this.x = x;
@@ -64,28 +65,16 @@ public class Robot {
         return hp;
     }
 
-    public int getEnergy() {
-        return energy;
+    public int getShield() {
+        return shield;
     }
 
     public int getDamage() {
         return damage;
     }
 
-    public int getShield() {
-        return shield;
-    }
-
-    public int getAoe() {
-        return aoe;
-    }
-
     public int getRange() {
         return range;
-    }
-
-    public int getAccuracy() {
-        return accuracy;
     }
 
     public int getMovement() {
@@ -108,6 +97,10 @@ public class Robot {
         hasDMGItem = dmgItem;
     }
 
+    public ArrayList<Items> getItemsOnRobot() {
+        return itemsOnRobot;
+    }
+
     public boolean getHasRangeItem() {
         return hasRangeItem;
     }
@@ -128,6 +121,10 @@ public class Robot {
         this.hp = hp;
     }
 
+    public void setShield(int shield) {
+        this.shield = shield;
+    }
+
     public void setMovement(int movement) {
         this.movement = movement;
     }
@@ -140,16 +137,7 @@ public class Robot {
         this.damage = damage;
     }
 
-    public void setShield(int shield) {
-        this.shield = shield;
-    }
 
-    public static void pickUpItem(Items[] items, Robot robot) {
-        for(Items item : items) {
-            if (robot.getX() == item.getItemX() && robot.getY() == item.getItemY()) {
-                item.changeStat(robot);
-            }
-        }
-    }
+
 }
 

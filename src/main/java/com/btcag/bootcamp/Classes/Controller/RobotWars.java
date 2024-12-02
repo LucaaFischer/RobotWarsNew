@@ -1,8 +1,6 @@
 package com.btcag.bootcamp.Classes.Controller;
 
 
-import com.btcag.bootcamp.Classes.Models.ChooseRandItem;
-import com.btcag.bootcamp.Classes.Models.Items;
 import com.btcag.bootcamp.Classes.Models.Player;
 import com.btcag.bootcamp.Classes.Models.Robot;
 import com.btcag.bootcamp.Classes.Views.AskForPlayerView;
@@ -36,6 +34,7 @@ public class RobotWars {
                     UseSkillPointsController.EndOfRoundSkillPoints(player1, player2, robot1, robot2);
                 }
             }
+
             GameController.countTurns++;
         }
         PrintOutWinnerView.printWinner(player1, player2, robot1, robot2);

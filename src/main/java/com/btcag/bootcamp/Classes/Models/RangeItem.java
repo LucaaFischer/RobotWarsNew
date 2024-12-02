@@ -1,11 +1,35 @@
 package com.btcag.bootcamp.Classes.Models;
 
+import com.btcag.bootcamp.Classes.Controller.ItemPositionValidator;
+import com.btcag.bootcamp.Classes.Views.PickUpItemMessage;
+
 import java.util.Random;
 
-public class RangeItem extends Items{
+public class RangeItem extends Items {
     static Random rand = new Random();
-    int x = rand.nextInt(5, 8);
-    int y = rand.nextInt(5, 8);
+    String itemName = "Range-Item";
+    int duration = 2;
+    int x;
+    int y;
+
+    @Override
+    public String getItemName() {
+        return itemName;
+    }
+
+    @Override
+    public void generatePosition(Items[] items) {
+        int tempX;
+        int tempY;
+
+        do {
+            tempX = rand.nextInt(5, 8);
+            tempY = rand.nextInt(5, 8);
+        } while (ItemPositionValidator.validator(items, tempX, tempY));
+
+        this.x = tempX;
+        this.y = tempY;
+    }
 
     @Override
     public int getItemX() {
@@ -18,8 +42,24 @@ public class RangeItem extends Items{
     }
 
     @Override
-    public int duration() {
-        return super.duration();
+    public int getDuration() {
+        return duration;
+    }
+
+    @Override
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    @Override
+    public boolean wasPickedUp(Robot robot) {
+        if (robot.getX() == getItemX() && robot.getY() == getItemY()) {
+            robot.itemsOnRobot.add(new RangeItem());
+            changeStat(robot);
+            robot.setHasRangeItem(true);
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -32,12 +72,6 @@ public class RangeItem extends Items{
         } else {
             return value * -1;
         }
-    }
-
-    @Override
-    public void defineItem() {
-        String itemName = "Range Item";
-        char iconOnMap = super.iconOnMap;
     }
 
     @Override

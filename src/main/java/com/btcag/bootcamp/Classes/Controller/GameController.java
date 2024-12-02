@@ -1,14 +1,9 @@
 package com.btcag.bootcamp.Classes.Controller;
 
-import com.btcag.bootcamp.Classes.Models.ChooseRandItem;
 import com.btcag.bootcamp.Classes.Models.Items;
 import com.btcag.bootcamp.Classes.Models.Player;
 import com.btcag.bootcamp.Classes.Models.Robot;
-import com.btcag.bootcamp.Classes.Views.AskForCombatView;
-import com.btcag.bootcamp.Classes.Views.Board;
-import com.btcag.bootcamp.Classes.Views.GameView;
-
-import java.util.Random;
+import com.btcag.bootcamp.Classes.Views.*;
 
 public class GameController {
     //---------------------------------------------------------------------------Startpositionen für die Roboter------------------------------------------------------------------
@@ -16,13 +11,14 @@ public class GameController {
     public static int tempRobotTurnX;
     public static int tempRobotTurnY;
     public static int movementThisRound;
+    public static Board board = new Board();
+    public static Items[] items = ItemController.generateItems();
 
     //----------------------------------------------------------------------------------Spielzüge--------------------------------------------------------------------------------------
     public static void turn(Robot robotTurn, Robot robotNotTurn, Player playerTurn, Player playerNotTurn) {
         movementThisRound = robotTurn.getMovement();
         tempRobotTurnX = robotTurn.getX();
         tempRobotTurnY = robotTurn.getY();
-        Items[] items = {ChooseRandItem.randomizer(), ChooseRandItem.randomizer(), ChooseRandItem.randomizer(), ChooseRandItem.randomizer()};
 
         GameView.playerTurnMessage(playerTurn);
 
@@ -30,10 +26,8 @@ public class GameController {
             GameView.movementLeftMessage(playerTurn);
 
             do {
-                if(!Validations.inRange(robotTurn, robotNotTurn)) {
+                if (!Validations.inRange(robotTurn, robotNotTurn)) {
                     robotTurn.setMove();
-                    Robot.pickUpItem(items, robotTurn);
-
 
                 } else {
                     AskForCombatView.askForCombat(robotTurn, robotNotTurn, playerTurn, playerNotTurn);
@@ -44,10 +38,14 @@ public class GameController {
             tempRobotTurnX = robotTurn.getX();
             tempRobotTurnY = robotTurn.getY();
             movementThisRound--;
-            Board.drawBoard(robotTurn, robotNotTurn, playerTurn, playerNotTurn, items);
-        }
+            board.drawBoard(robotTurn, robotNotTurn, playerTurn, playerNotTurn, items);
+            items = ItemController.removePickedUpItems(items, robotTurn, robotNotTurn, playerTurn , playerNotTurn );
+            }
 
+        AdjustItemDuration.adjustDuration(robotTurn.getItemsOnRobot(),robotTurn);
+        PrintLeftoverItemDuration.printDuration(robotTurn.getItemsOnRobot(), playerTurn);
         playerTurn.skillPoints++;
+
     }
 }
 
