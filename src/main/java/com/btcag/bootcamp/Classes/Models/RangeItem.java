@@ -7,6 +7,7 @@ import java.util.Random;
 public class RangeItem extends Items {
     static Random rand = new Random();
     String itemName = "Range-Item";
+    int chance = rand.nextInt(101);
     int duration = 2;
     int x;
     int y;
@@ -61,7 +62,6 @@ public class RangeItem extends Items {
 
     @Override
     public int itemValue() {
-        int chance = rand.nextInt(101);
         int value = 1;
 
         if (chance > 10) {
@@ -73,20 +73,12 @@ public class RangeItem extends Items {
 
     @Override
     public void changeStat(Robot robot) {
-        if (itemValue() > 0) {
+        if (itemValue() > 0 || robot.getRange() + itemValue() >= 1) {
             robot.setRange(robot.getRange() + itemValue());
             setItemTookEffect(true);
-        }
 
-        else {
-            if(robot.getRange() - itemValue() < 1) {
-                robot.setRange(robot.getRange());
-                setItemTookEffect(false);
-
-            } else {
-                robot.setRange(robot.getRange() - itemValue());
-                setItemTookEffect(true);
-            }
+        } else {
+            setItemTookEffect(false);
         }
     }
 

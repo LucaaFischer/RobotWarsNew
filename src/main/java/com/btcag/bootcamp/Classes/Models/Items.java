@@ -6,6 +6,7 @@ public abstract class Items {
     int x;
     int y;
     int duration;
+    int chance;
     boolean itemTookEffect;
 
     public abstract String getItemName();

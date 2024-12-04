@@ -24,12 +24,7 @@ public class AdjustItemDuration {
                     robot.setRange(robot.getRange() - expiredItem.itemValue());
 
                 } else {
-                    if ((expiredItem.itemValue() + robot.getRange() < 1) && expiredItem.getItemTookEffect()) {
-                        robot.setRange(1);
-
-                    } else {
-                        robot.setRange(robot.getRange() + expiredItem.itemValue());
-                    }
+                    robot.setRange(robot.getRange() *- expiredItem.itemValue());
                 }
 
             } else if(expiredItem instanceof DMGItem) {
@@ -37,12 +32,7 @@ public class AdjustItemDuration {
                     robot.setDamage(robot.getDamage() - expiredItem.itemValue());
 
                 } else {
-                    if ((expiredItem.itemValue() + robot.getDamage() < 1) && expiredItem.getItemTookEffect()) {
-                        robot.setDamage(1);
-
-                    } else {
-                        robot.setDamage(robot.getDamage() + expiredItem.itemValue());
-                    }
+                    robot.setDamage(robot.getDamage() *- expiredItem.itemValue());
                 }
 
             } else if(expiredItem instanceof MovementItem) {
@@ -50,12 +40,7 @@ public class AdjustItemDuration {
                     robot.setMovement(robot.getMovement() - expiredItem.itemValue());
 
                 } else {
-                    if ((expiredItem.itemValue() + robot.getMovement() < 1) && expiredItem.getItemTookEffect()) {
-                        robot.setMovement(1);
-
-                    } else {
-                        robot.setMovement(robot.getMovement() + expiredItem.itemValue());
-                    }
+                    robot.setMovement(robot.getMovement() *- expiredItem.itemValue());
                 }
             }
         }

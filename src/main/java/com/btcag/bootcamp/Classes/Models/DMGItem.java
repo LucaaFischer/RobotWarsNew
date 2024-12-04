@@ -7,6 +7,7 @@ import java.util.Random;
 public class DMGItem extends Items {
     Random rand = new Random();
     String itemName = "Damage-Item";
+    int chance = rand.nextInt(101);
     int duration = 2;
     int x;
     int y;
@@ -61,7 +62,6 @@ public class DMGItem extends Items {
 
     @Override
     public int itemValue() {
-        int chance = rand.nextInt(101);
         int value = 2;
 
         if (chance > 10) {
@@ -73,20 +73,12 @@ public class DMGItem extends Items {
 
     @Override
     public void changeStat(Robot robot) {
-        if (itemValue() > 0) {
+        if (itemValue() > 0 || robot.getDamage() + itemValue() >= 1) {
             robot.setDamage(robot.getDamage() + itemValue());
             setItemTookEffect(true);
-        }
 
-        else {
-            if(robot.getDamage() - itemValue() < 1) {
-                robot.setDamage(robot.getDamage());
-                setItemTookEffect(false);
-
-            } else {
-                robot.setDamage(robot.getDamage() - itemValue());
-                setItemTookEffect(true);
-            }
+        } else {
+            setItemTookEffect(false);
         }
     }
 

@@ -4,9 +4,10 @@ import com.btcag.bootcamp.Classes.Controller.ItemPositionValidator;
 
 import java.util.Random;
 
-public class MovementItem extends Items{
+public class MovementItem extends Items {
     Random rand = new Random();
     String itemName = "Movement-Item";
+    int chance = rand.nextInt(101);
     int duration = 2;
     int x;
     int y;
@@ -40,6 +41,7 @@ public class MovementItem extends Items{
     public int getItemY() {
         return y;
     }
+
     @Override
     public int getDuration() {
         return duration;
@@ -52,15 +54,14 @@ public class MovementItem extends Items{
 
     @Override
     public boolean wasPickedUp(Robot robot) {
-            robot.itemsOnRobot.add(new MovementItem());
-            changeStat(robot);
-            robot.setHasMovementItem(true);
-            return true;
+        robot.itemsOnRobot.add(new MovementItem());
+        changeStat(robot);
+        robot.setHasMovementItem(true);
+        return true;
     }
 
     @Override
     public int itemValue() {
-        int chance = rand.nextInt(101);
         int value = 2;
 
         if (chance > 10) {
@@ -72,20 +73,12 @@ public class MovementItem extends Items{
 
     @Override
     public void changeStat(Robot robot) {
-        if (itemValue() > 0) {
+        if (itemValue() > 0 || robot.getMovement() + itemValue() >= 1) {
             robot.setMovement(robot.getMovement() + itemValue());
             setItemTookEffect(true);
-        }
 
-        else {
-            if(robot.getMovement() - itemValue() < 1) {
-                robot.setMovement(robot.getMovement());
-                setItemTookEffect(false);
-
-            } else {
-                robot.setMovement(robot.getMovement() - itemValue());
-                setItemTookEffect(true);
-            }
+        } else {
+            setItemTookEffect(false);
         }
     }
 
