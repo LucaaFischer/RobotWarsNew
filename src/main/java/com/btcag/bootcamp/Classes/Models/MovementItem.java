@@ -1,5 +1,6 @@
 package com.btcag.bootcamp.Classes.Models;
 
+import com.btcag.bootcamp.Classes.Controller.GameController;
 import com.btcag.bootcamp.Classes.Controller.ItemPositionValidator;
 
 import java.util.Random;
@@ -75,6 +76,7 @@ public class MovementItem extends Items {
     public void changeStat(Robot robot) {
         if (itemValue() > 0 || robot.getMovement() + itemValue() >= 1) {
             robot.setMovement(robot.getMovement() + itemValue());
+            GameController.movementThisRound += itemValue();
             setItemTookEffect(true);
 
         } else {
