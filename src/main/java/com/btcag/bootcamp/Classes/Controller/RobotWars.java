@@ -13,6 +13,7 @@ public class RobotWars {
         Player player2 = new Player();
         Robot robot1 = new Robot(1, 1);
         Robot robot2 = new Robot(15, 15);
+        FightController fightController = new FightController();
 
         player1.setName(AskForPlayerView.askForName());
         player1.setAvatar();
@@ -23,14 +24,14 @@ public class RobotWars {
 
         UseSkillPointsController.StartSkillPoints(player1, player2, robot1, robot2);
 
-        while (!FightController.checkWin(robot1, robot2)) {
+        while (!fightController.checkWin(robot1, robot2)) {
             if (GameController.countTurns % 2 == 0) {
-                GameController.turn(robot1, robot2, player1, player2);
+                GameController.turn(robot1, robot2, player1, player2, fightController);
 
             } else {
-                GameController.turn(robot2, robot1, player2, player1);
+                GameController.turn(robot2, robot1, player2, player1, fightController);
 
-                if (!FightController.checkWin(robot2, robot1)) {
+                if (!fightController.checkWin(robot2, robot1)) {
                     UseSkillPointsController.EndOfRoundSkillPoints(player1, player2, robot1, robot2);
                 }
             }

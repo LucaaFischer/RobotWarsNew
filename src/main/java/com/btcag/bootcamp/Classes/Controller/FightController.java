@@ -6,9 +6,10 @@ import com.btcag.bootcamp.Classes.Views.FightView;
 import com.btcag.bootcamp.Classes.Views.PrintStatsView;
 
 public class FightController {
+    public boolean hasAttacked;
 
     //------------------------------------------------------------------------Kampfablauf--------------------------------------------------------------------------------------------
-    public static void fight(Robot robotTurn, Robot robotNotTurn, Player playerTurn, Player playerNotTurn) {
+    public void fight(Robot robotTurn, Robot robotNotTurn, Player playerTurn, Player playerNotTurn) {
         FightView.attackMessage();
 
         int tempRoboDmg = robotTurn.getDamage();
@@ -33,7 +34,7 @@ public class FightController {
     }
 
     //------------------------------------------------------------Überprüfen OB es einen Gewinner gibt--------------------------------------------------------------------
-    public static boolean checkWin(Robot robot1, Robot robot2) {
+    public boolean checkWin(Robot robot1, Robot robot2) {
         return robot1.getHp() <= 0 || robot2.getHp() <= 0;
     }
 
@@ -48,5 +49,13 @@ public class FightController {
             winner = player1.getName();
         }
         return winner;
+    }
+
+    public void setHasAttacked(boolean hasAttacked) {
+        this.hasAttacked = hasAttacked;
+    }
+
+    public boolean getHasAttacked() {
+        return hasAttacked;
     }
 }
