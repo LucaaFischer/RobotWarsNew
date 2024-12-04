@@ -1,11 +1,13 @@
 package com.btcag.bootcamp.Classes.Views;
 
+import com.btcag.bootcamp.Classes.Enums.Walls;
 import com.btcag.bootcamp.Classes.Models.*;
 
 public class Board {
-    char itemIcon = 63;
-
     public void drawBoard(Robot robot1, Robot robot2, Player player1, Player player2, Items[] items) {
+        char itemIcon = 63;
+        String wallIcon = Walls.WALL1.icon;
+
         int y = 1;
         System.out.print("      ");
         for (int i = 1; i <= 15; i++) {
@@ -20,7 +22,6 @@ public class Board {
         System.out.println();
 
         String yOut = "";
-
 
         while (y <= 15) {
             yOut = String.valueOf(y);
@@ -38,33 +39,22 @@ public class Board {
                 } else if (x == robot2.getX() && y == robot2.getY()) {
                     System.out.print(STR." [ \{player2.getAvatar()} ] ");
 
-                } else if (!itemOnField(items, x, y, robot1, robot2)) {
+                } else if (MapItemField.itemOnField(items, x, y)) {
+                    System.out.print(STR." [ \{itemIcon} ] ");
+
+                } else if (MapWallField.wallField(x, y)) {
+                    System.out.print(STR." [\{wallIcon}] ");
+
+                } else {
                     System.out.print(" [   ] ");
                 }
-
                 x++;
             }
-            System.out.println();
             System.out.println();
             y++;
         }
 
         System.out.println(STR."\{player2.getName()}'s robot (\{player2.getAvatar()}) is on field x \{robot2.getX()} y \{robot2.getY()}.");
         System.out.println(STR."\{player1.getName()}'s robot (\{player1.getAvatar()}) is on field x \{robot1.getX()} y \{robot1.getY()}.");
-        for (Items item : items) {
-            System.out.println(itemIcon);
-        }
-    }
-
-    public boolean itemOnField(Items[] items, int x, int y, Robot robot1, Robot robot2) {
-        boolean itemFound = false;
-
-        for (Items item : items) {
-            if (x == item.getItemX() && y == item.getItemY()) {
-                System.out.print(STR." [ \{itemIcon} ] ");
-                itemFound = true;
-            }
-        }
-        return itemFound;
     }
 }
