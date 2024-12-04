@@ -23,8 +23,8 @@ public class ItemController {
         int itemToRemove = 0;
         for (Items item : items) {
             if (PickUpItem.checkPickUp(robotTurn, item)) {
-                PickUpItemMessage.message(item.getItemName(), item.itemValue(), robotTurn, robotNotTurn, playerTurn, playerNotNotTurn);
                 item.wasPickedUp(robotTurn);
+                PickUpItemMessage.message(item.getItemName(), item.itemValue(), robotTurn, robotNotTurn, playerTurn, playerNotNotTurn);
                 items = AdjustItemsArray.adjustItemsArray(items, itemToRemove);
             }
             itemToRemove++;

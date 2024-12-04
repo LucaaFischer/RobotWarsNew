@@ -6,6 +6,7 @@ public abstract class Items {
     int x;
     int y;
     int duration;
+    boolean itemTookEffect;
 
     public abstract String getItemName();
 
@@ -28,5 +29,9 @@ public abstract class Items {
     public abstract boolean wasPickedUp(Robot robot1);
 
     public void changeStat(Robot robot){}
+
+    public void setItemTookEffect(boolean tookEffect){};
+
+    public abstract boolean getItemTookEffect();
 
 }

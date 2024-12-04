@@ -1,7 +1,6 @@
 package com.btcag.bootcamp.Classes.Models;
 
 import com.btcag.bootcamp.Classes.Controller.ItemPositionValidator;
-import com.btcag.bootcamp.Classes.Views.PickUpItemMessage;
 
 import java.util.Random;
 
@@ -11,6 +10,7 @@ public class DMGItem extends Items {
     int duration = 2;
     int x;
     int y;
+    boolean itemTookEffect;
 
     @Override
     public String getItemName() {
@@ -53,13 +53,10 @@ public class DMGItem extends Items {
 
     @Override
     public boolean wasPickedUp(Robot robot) {
-        if (robot.getX() == getItemX() && robot.getY() == getItemY()) {
             robot.itemsOnRobot.add(new DMGItem());
             changeStat(robot);
             robot.setHasDMGItem(true);
             return true;
-        }
-        return false;
     }
 
     @Override
@@ -76,6 +73,30 @@ public class DMGItem extends Items {
 
     @Override
     public void changeStat(Robot robot) {
-        robot.setDamage(robot.getDamage() + itemValue());
+        if (itemValue() > 0) {
+            robot.setDamage(robot.getDamage() + itemValue());
+            setItemTookEffect(true);
+        }
+
+        else {
+            if(robot.getDamage() - itemValue() < 1) {
+                robot.setDamage(robot.getDamage());
+                setItemTookEffect(false);
+
+            } else {
+                robot.setDamage(robot.getDamage() - itemValue());
+                setItemTookEffect(true);
+            }
+        }
+    }
+
+    @Override
+    public void setItemTookEffect(boolean tookEffect) {
+        this.itemTookEffect = tookEffect;
+    }
+
+    @Override
+    public boolean getItemTookEffect() {
+        return itemTookEffect;
     }
 }

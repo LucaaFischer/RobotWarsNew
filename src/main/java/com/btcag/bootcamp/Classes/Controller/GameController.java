@@ -39,10 +39,10 @@ public class GameController {
             tempRobotTurnY = robotTurn.getY();
             movementThisRound--;
             board.drawBoard(robotTurn, robotNotTurn, playerTurn, playerNotTurn, items);
-            items = ItemController.removePickedUpItems(items, robotTurn, robotNotTurn, playerTurn , playerNotTurn );
-            }
+            items = ItemController.removePickedUpItems(items, robotTurn, robotNotTurn, playerTurn, playerNotTurn);
+        }
 
-        AdjustItemDuration.adjustDuration(robotTurn.getItemsOnRobot(),robotTurn);
+        AdjustItemDuration.adjustDuration(robotTurn.getItemsOnRobot(), robotTurn);
         PrintLeftoverItemDuration.printDuration(robotTurn.getItemsOnRobot(), playerTurn);
         playerTurn.skillPoints++;
 
