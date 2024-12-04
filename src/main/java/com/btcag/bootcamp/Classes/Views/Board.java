@@ -49,8 +49,8 @@ public class Board {
             y++;
         }
 
-        System.out.println(STR."\{player2.getName()}'s Roboter (\{player2.getAvatar()}) befindet sich auf Feld x \{robot2.getX()} y \{robot2.getY()}.");
-        System.out.println(STR."\{player1.getName()}'s Roboter (\{player1.getAvatar()}) befindet sich auf Feld x \{robot1.getX()} y \{robot1.getY()}.");
+        System.out.println(STR."\{player2.getName()}'s robot (\{player2.getAvatar()}) is on field x \{robot2.getX()} y \{robot2.getY()}.");
+        System.out.println(STR."\{player1.getName()}'s robot (\{player1.getAvatar()}) is on field x \{robot1.getX()} y \{robot1.getY()}.");
         for (Items item : items) {
             System.out.println(itemIcon);
         }

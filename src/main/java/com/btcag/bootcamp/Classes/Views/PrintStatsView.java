@@ -4,7 +4,7 @@ import com.btcag.bootcamp.Classes.Models.*;
 
 public class PrintStatsView {
     public static void printStats(Robot robot1, Robot robot2, Player player1, Player player2) {
-        System.out.println("Eure Stats: ");
+        System.out.println("Your stats: ");
         System.out.println(STR."        \{player1.getName()} (\{player1.getAvatar()})               \{player2.getName()} (\{player2.getAvatar()})");
 
         System.out.println(STR."HP:        \{robot1.getHp()}                     \{robot2.getHp()}");

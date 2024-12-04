@@ -2,7 +2,7 @@ package com.btcag.bootcamp.Classes.Views;
 
 public class FightView {
     public static void attackMessage() {
-        System.out.println("DU GREIFST DEINEN GEGNER AN!");
+        System.out.println("YOU'VE ATTACKED YOUR ENEMY");
     }
 
     public static void noWinnerMessage() {

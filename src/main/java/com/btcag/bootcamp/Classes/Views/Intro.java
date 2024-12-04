@@ -11,8 +11,8 @@ public class Intro {
         System.out.println("|  |\\  \\----.|  `--'  | |  |_)  | |  `--'  |     |  |           \\    /\\    / /  _____  \\  |  |\\  \\----.----)   |   \n");
         System.out.println("| _| `._____| \\______/  |______/   \\______/      |__|            \\__/  \\__/ /__/     \\__\\ | _| `._____|_______/  \n");
 
-        System.out.println(STR."WILLKOMMEN ZU ROBOT-WARS \{player1.getName().toUpperCase()} UND \{player2.getName().toUpperCase()} !!!\n");
-        System.out.println(STR."Dein Avatar \{player1.getName()}: \{player1.getAvatar()}");
-        System.out.println(STR."Dein Avatar \{player2.getName()}: \{player2.getAvatar()}\n");
+        System.out.println(STR."WELCOME TO ROBOT-WARS \{player1.getName().toUpperCase()} AND \{player2.getName().toUpperCase()} !!!\n");
+        System.out.println(STR."Your avatar \{player1.getName()}: \{player1.getAvatar()}");
+        System.out.println(STR."Your avatar \{player2.getName()}: \{player2.getAvatar()}\n");
     }
 }

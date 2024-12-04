@@ -11,7 +11,7 @@ public class AskForPlayerView {
         String name = "";
         Scanner input = new Scanner(System.in);
         do {
-            System.out.println("Bitte gib deinen gewünschten Benutzernamen ein");
+            System.out.println("Please enter your name: ");
             name = input.nextLine();
         } while (name.length() < 3 || name.length() > 16);
         return name;
@@ -21,7 +21,7 @@ public class AskForPlayerView {
         Scanner input = new Scanner(System.in);
         String avatar = "";
         do {
-            System.out.println(STR."Bitte wähle einen Avatar.");
+            System.out.println(STR."Please choose an avatar");
             avatar = input.nextLine();
         } while (avatar.length() != 1);
         return avatar;

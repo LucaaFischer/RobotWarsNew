@@ -4,14 +4,14 @@ import com.btcag.bootcamp.Classes.Models.Player;
 
 public class UseSkillPointsView {
     public static void startSkillPointsMessage() {
-        System.out.println("Anfang der Runde. Verteilt eure Start-Skillpoints!\n");
+        System.out.println("Game started! Use your start-skillpoints!\n");
     }
 
     public static void endSkillPointsMessage() {
-        System.out.println("Ende der Runde. Nutzt eure Skillpoints!");
+        System.out.println("End of turn. Use your Skillpoints!");
     }
 
     public static void skillPointsLeftMessage(Player player) {
-        System.out.println(STR."Du hast noch \{player.skillPoints} Skillpoint(s), \{player.getName()}");
+        System.out.println(STR."You have \{player.skillPoints} skillpoint(s) left, \{player.getName()}");
     }
 }
