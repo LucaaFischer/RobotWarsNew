@@ -20,7 +20,7 @@ public class AskForCombatView {
 
         } else {
             System.out.println("Afraid?");
-            robotTurn.setMove();
+            robotTurn.setMove(AskForMove.askForMove(), robotNotTurn);
         }
     }
 }

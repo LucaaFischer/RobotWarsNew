@@ -1,6 +1,9 @@
 package com.btcag.bootcamp.Classes.Models;
 
-import com.btcag.bootcamp.Classes.Views.PickUpItemMessage;
+import com.btcag.bootcamp.Classes.Controller.MoveValidator;
+import com.btcag.bootcamp.Classes.Enums.Directions;
+import com.btcag.bootcamp.Classes.Views.AskForMove;
+
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -25,20 +28,30 @@ public class Robot {
         this.y = y;
     }
 
-    //------------------------------------------------------------------------Spieler den Roboter platzieren lassen-----------------------------------------------------------------
-    public void setMove() {
-        System.out.println("Wo möchtest du deinen Roboter platzieren? Y-Koordinate:");
-        this.x = input.nextInt();
-        System.out.println("Und die X-Koordinate?");
-        this.y = input.nextInt();
+    public void setMove(String userInput, Robot robotNotTurn) {
+        int tempX = getX();
+        int tempY = getY();
 
-        input.nextLine(); // Scanner muss leer sein, damit beim ersten setStats() Durchlauf nicht direkt Default Wert ausgeführt wird lol
+        for (Directions direction : Directions.values()) {
+            if (userInput.equals(direction.key)) {
+                tempX += direction.x;
+                tempY += direction.y;
+            }
+        }
+
+        if (MoveValidator.moveValid(tempX, tempY, robotNotTurn)) {
+            setX(tempX);
+            setY(tempY);
+        } else {
+            setMove(AskForMove.askForMove(), robotNotTurn);
+        }
     }
+
 
     //-------------------------------------------------------------------Spieler die Stats für Robo festlegen lassen---------------------------------------------------------------
     public void setStats() {
         String skillStat = " ";
-        System.out.println("Was möchtest du skillen?");
+        System.out.println("Which stat do you want to skill?");
         skillStat = input.nextLine();
         switch (skillStat) {
             case "hp":
@@ -83,6 +96,14 @@ public class Robot {
 
     public int getX() {
         return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 
     public int getY() {
@@ -136,7 +157,6 @@ public class Robot {
     public void setDamage(int damage) {
         this.damage = damage;
     }
-
 
 
 }

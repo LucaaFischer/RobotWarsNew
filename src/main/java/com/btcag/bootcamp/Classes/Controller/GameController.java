@@ -14,26 +14,21 @@ public class GameController {
     public static Board board = new Board();
     public static Items[] items = ItemController.generateItems();
 
-    //----------------------------------------------------------------------------------Spielzüge--------------------------------------------------------------------------------------
     public static void turn(Robot robotTurn, Robot robotNotTurn, Player playerTurn, Player playerNotTurn, FightController fightController) {
         movementThisRound = robotTurn.getMovement();
+        GameView.playerTurnMessage(playerTurn);
         tempRobotTurnX = robotTurn.getX();
         tempRobotTurnY = robotTurn.getY();
-
-        GameView.playerTurnMessage(playerTurn);
 
         while (movementThisRound > 0 && !fightController.checkWin(robotTurn, robotNotTurn)) {
             GameView.movementLeftMessage(playerTurn);
 
-            do {
                 if (CheckInRange.inRange(robotTurn, robotNotTurn) && !fightController.getHasAttacked()) {
                     AskForCombatView.askForCombat(robotTurn, robotNotTurn, playerTurn, playerNotTurn, fightController);
 
                 } else {
-                    robotTurn.setMove();
+                    robotTurn.setMove(AskForMove.askForMove(), robotNotTurn);
                 }
-
-            } while (!MoveValidator.moveValid(robotTurn, robotNotTurn));
 
             tempRobotTurnX = robotTurn.getX();
             tempRobotTurnY = robotTurn.getY();
