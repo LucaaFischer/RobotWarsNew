@@ -7,17 +7,21 @@ public class MoveRobot {
     public static void moveRobot(String userInput, Robot robotTurn, Robot robotNotTurn) {
         int tempX = robotTurn.getX();
         int tempY = robotTurn.getY();
+        Directions tempFacingDirection = robotTurn.getFacingDirection();
 
         for (Directions direction : Directions.values()) {
             if (userInput.equals(direction.key)) {
                 tempX += direction.x;
                 tempY += direction.y;
+                tempFacingDirection = direction;
             }
         }
 
         if (MoveValidator.moveValid(tempX, tempY, robotNotTurn)) {
             robotTurn.setX(tempX);
             robotTurn.setY(tempY);
+            robotTurn.setFacingDirection(tempFacingDirection);
+
         } else {
             robotTurn.setMove(robotTurn, robotNotTurn);
         }
@@ -26,8 +30,7 @@ public class MoveRobot {
     public static void alignRobot(String userInput, Robot robotTurn) {
         for (Directions direction : Directions.values()) {
             if (userInput.equals(direction.key)) {
-                robotTurn.setFacingDirectionX(robotTurn.getX() + direction.x);
-                robotTurn.setFacingDirectionY(robotTurn.getY() + direction.y);
+                robotTurn.setFacingDirection(direction);
             }
         }
 

@@ -1,6 +1,7 @@
 package com.btcag.bootcamp.Classes.Controller;
 
 
+import com.btcag.bootcamp.Classes.Enums.Directions;
 import com.btcag.bootcamp.Classes.Models.Player;
 import com.btcag.bootcamp.Classes.Models.Robot;
 import com.btcag.bootcamp.Classes.Views.AskForPlayerView;
@@ -11,8 +12,8 @@ public class RobotWars {
     public void main(String[] args) {
         Player player1 = new Player();
         Player player2 = new Player();
-        Robot robot1 = new Robot(1, 1, 2, 1);
-        Robot robot2 = new Robot(15, 15, 14, 15);
+        Robot robot1 = new Robot(1, 1, Directions.SOUTH);
+        Robot robot2 = new Robot(15, 15,  Directions.NORTH);
         FightController fightController = new FightController();
 
         player1.setName(AskForPlayerView.askForName());

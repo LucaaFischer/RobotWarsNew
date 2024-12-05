@@ -1,6 +1,7 @@
 package com.btcag.bootcamp.Classes.Models;
 
 import com.btcag.bootcamp.Classes.Controller.MoveRobot;
+import com.btcag.bootcamp.Classes.Enums.Directions;
 import com.btcag.bootcamp.Classes.Views.AskForMove;
 import com.btcag.bootcamp.Classes.Views.SkillStatMessages;
 
@@ -10,8 +11,7 @@ import java.util.ArrayList;
 public class Robot {
     protected int x;
     protected int y;
-    protected int facingDirectionX;
-    protected int facingDirectionY;
+    protected Directions facingDirection;
     protected int hp = 1;
     protected int damage = 1;
     protected int range = 1;
@@ -22,11 +22,10 @@ public class Robot {
     protected boolean hasMovementItem;
     ArrayList<Items> itemsOnRobot = new ArrayList<>();
 
-    public Robot(int x, int y, int facingDirectionX, int facingDirectionY) {
+    public Robot(int x, int y, Directions facingDirection) {
         this.x = x;
         this.y = y;
-        this.facingDirectionX = facingDirectionX;
-        this.facingDirectionY = facingDirectionY;
+        this.facingDirection = facingDirection;
     }
 
     public void setMove(Robot robotTurn, Robot robotNotTurn) {
@@ -98,20 +97,12 @@ public class Robot {
         return y;
     }
 
-    public int getFacingDirectionX() {
-        return facingDirectionX;
+    public Directions getFacingDirection() {
+        return facingDirection;
     }
 
-    public int getFacingDirectionY() {
-        return facingDirectionY;
-    }
-
-    public void setFacingDirectionX(int facingDirectionX) {
-        this.facingDirectionX = facingDirectionX;
-    }
-
-    public void setFacingDirectionY(int facingDirectionY) {
-        this.facingDirectionY = facingDirectionY;
+    public void setFacingDirection(Directions facingDirection) {
+        this.facingDirection = facingDirection;
     }
 
     public boolean getHasDMGItem() {

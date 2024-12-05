@@ -55,9 +55,9 @@ public class Board {
         }
 
         System.out.println(STR."\{player1.getName()}'s robot (\{player1.getAvatar()}) is on field x \{robot1.getX()} y \{robot1.getY()}.");
-        System.out.println(STR."He is facing x \{robot1.getFacingDirectionX()} y \{robot1.getFacingDirectionY()}");
+        System.out.println(STR."He is facing \{robot1.getFacingDirection()}");
 
         System.out.println(STR."\{player2.getName()}'s robot (\{player2.getAvatar()}) is on field x \{robot2.getX()} y \{robot2.getY()}.");
-        System.out.println(STR."He is facing x \{robot2.getFacingDirectionX()} y \{robot2.getFacingDirectionY()}");
+        System.out.println(STR."He is facing \{robot2.getFacingDirection()}");
     }
 }
