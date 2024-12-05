@@ -3,6 +3,7 @@ package com.btcag.bootcamp.Classes.Models;
 import com.btcag.bootcamp.Classes.Controller.MoveValidator;
 import com.btcag.bootcamp.Classes.Enums.Directions;
 import com.btcag.bootcamp.Classes.Views.AskForMove;
+import com.btcag.bootcamp.Classes.Views.SkillStatMessages;
 
 
 import java.util.ArrayList;
@@ -50,9 +51,7 @@ public class Robot {
 
     //-------------------------------------------------------------------Spieler die Stats für Robo festlegen lassen---------------------------------------------------------------
     public void setStats() {
-        String skillStat = " ";
-        System.out.println("Which stat do you want to skill?");
-        skillStat = input.nextLine();
+        String skillStat = SkillStatMessages.askForStat();
         switch (skillStat) {
             case "hp":
                 this.hp++;
@@ -67,11 +66,10 @@ public class Robot {
                 this.movement++;
                 break;
             default:
-                System.out.println("Invalid Stat! Du kannst nur HP, AD, Movement und Range anpassen.");
+                SkillStatMessages.invalidStatMessage();
                 setStats();
                 break;
         }
-
     }
 
     public int getHp() {
