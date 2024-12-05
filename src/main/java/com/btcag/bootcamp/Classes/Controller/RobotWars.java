@@ -4,12 +4,11 @@ package com.btcag.bootcamp.Classes.Controller;
 import com.btcag.bootcamp.Classes.Models.Player;
 import com.btcag.bootcamp.Classes.Models.Robot;
 import com.btcag.bootcamp.Classes.Views.AskForPlayerView;
-import com.btcag.bootcamp.Classes.Views.Board;
 import com.btcag.bootcamp.Classes.Views.Intro;
 import com.btcag.bootcamp.Classes.Views.PrintOutWinnerView;
 
 public class RobotWars {
-    public static void main(String[] args) {
+    public void main(String[] args) {
         Player player1 = new Player();
         Player player2 = new Player();
         Robot robot1 = new Robot(1, 1);
