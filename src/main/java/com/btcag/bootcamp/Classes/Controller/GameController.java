@@ -27,7 +27,6 @@ public class GameController {
                 }
 
             movementThisRound--;
-
             board.drawBoard(robotTurn, robotNotTurn, playerTurn, playerNotTurn, items);
             items = ItemController.removePickedUpItems(items, robotTurn, robotNotTurn, playerTurn, playerNotTurn);
         }
@@ -36,7 +35,6 @@ public class GameController {
         PrintLeftoverItemDuration.printDuration(robotTurn.getItemsOnRobot(), playerTurn);
         playerTurn.skillPoints++;
         fightController.setHasAttacked(false);
-
     }
 }
 
