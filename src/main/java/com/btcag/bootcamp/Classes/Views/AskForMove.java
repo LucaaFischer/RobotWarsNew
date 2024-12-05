@@ -3,12 +3,23 @@ package com.btcag.bootcamp.Classes.Views;
 import java.util.Scanner;
 
 public class AskForMove {
-    public static String askForMove() {
-        Scanner input = new Scanner(System.in);
+    static Scanner input = new Scanner(System.in);
+
+    public static String intendedAction() {
+        String intendedMove;
+        do {
+            System.out.println("Do you want to move or align your robot?");
+            intendedMove = input.nextLine();
+        } while (!intendedMove.equalsIgnoreCase("move") && !intendedMove.equalsIgnoreCase("align"));
+
+        return intendedMove;
+    }
+
+    public static String askForDirection() {
         String direction;
 
         do {
-            System.out.println("Where do you want to place your robot?");
+            System.out.println("In which direction?");
             System.out.println("North (W) \n" +
                     "North-East (E) \n" +
                     "East (D) \n" +

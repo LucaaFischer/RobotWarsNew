@@ -11,8 +11,8 @@ public class RobotWars {
     public void main(String[] args) {
         Player player1 = new Player();
         Player player2 = new Player();
-        Robot robot1 = new Robot(1, 1);
-        Robot robot2 = new Robot(15, 15);
+        Robot robot1 = new Robot(1, 1, 2, 1);
+        Robot robot2 = new Robot(15, 15, 14, 15);
         FightController fightController = new FightController();
 
         player1.setName(AskForPlayerView.askForName());
@@ -22,7 +22,7 @@ public class RobotWars {
 
         Intro.intro(player1, player2);
 
-        UseSkillPointsController.StartSkillPoints(player1, player2, robot1, robot2);
+        UseSkillPointsController.startSkillPoints(player1, player2, robot1, robot2);
 
         while (!fightController.checkWin(robot1, robot2)) {
             if (GameController.countTurns % 2 == 0) {
@@ -32,7 +32,7 @@ public class RobotWars {
                 GameController.turn(robot2, robot1, player2, player1, fightController);
 
                 if (!fightController.checkWin(robot2, robot1)) {
-                    UseSkillPointsController.EndOfRoundSkillPoints(player1, player2, robot1, robot2);
+                    UseSkillPointsController.endOfRoundSkillPoints(player1, player2, robot1, robot2);
                 }
             }
 

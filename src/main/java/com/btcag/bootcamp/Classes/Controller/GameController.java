@@ -23,7 +23,7 @@ public class GameController {
                     AskForCombatView.askForCombat(robotTurn, robotNotTurn, playerTurn, playerNotTurn, fightController);
 
                 } else {
-                    robotTurn.setMove(AskForMove.askForMove(), robotNotTurn);
+                    robotTurn.setMove(robotTurn, robotNotTurn);
                 }
 
             movementThisRound--;

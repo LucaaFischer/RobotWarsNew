@@ -1,19 +1,17 @@
 package com.btcag.bootcamp.Classes.Models;
 
-import com.btcag.bootcamp.Classes.Controller.MoveValidator;
-import com.btcag.bootcamp.Classes.Enums.Directions;
+import com.btcag.bootcamp.Classes.Controller.MoveRobot;
 import com.btcag.bootcamp.Classes.Views.AskForMove;
 import com.btcag.bootcamp.Classes.Views.SkillStatMessages;
 
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Robot {
-    //---------------------------------------------------------------------Erstellen des Standard Roboters----------------------------------------------------------------------------
-    Scanner input = new Scanner(System.in);
     protected int x;
     protected int y;
+    protected int facingDirectionX;
+    protected int facingDirectionY;
     protected int hp = 1;
     protected int damage = 1;
     protected int range = 1;
@@ -24,27 +22,19 @@ public class Robot {
     protected boolean hasMovementItem;
     ArrayList<Items> itemsOnRobot = new ArrayList<>();
 
-    public Robot(int x, int y) {
+    public Robot(int x, int y, int facingDirectionX, int facingDirectionY) {
         this.x = x;
         this.y = y;
+        this.facingDirectionX = facingDirectionX;
+        this.facingDirectionY = facingDirectionY;
     }
 
-    public void setMove(String userInput, Robot robotNotTurn) {
-        int tempX = getX();
-        int tempY = getY();
+    public void setMove(Robot robotTurn, Robot robotNotTurn) {
+        if(AskForMove.intendedAction().equals("move")) {
+            MoveRobot.moveRobot(AskForMove.askForDirection(), robotTurn, robotNotTurn);
 
-        for (Directions direction : Directions.values()) {
-            if (userInput.equals(direction.key)) {
-                tempX += direction.x;
-                tempY += direction.y;
-            }
-        }
-
-        if (MoveValidator.moveValid(tempX, tempY, robotNotTurn)) {
-            setX(tempX);
-            setY(tempY);
         } else {
-            setMove(AskForMove.askForMove(), robotNotTurn);
+            MoveRobot.alignRobot(AskForMove.askForDirection(), robotTurn);
         }
     }
 
@@ -108,6 +98,22 @@ public class Robot {
         return y;
     }
 
+    public int getFacingDirectionX() {
+        return facingDirectionX;
+    }
+
+    public int getFacingDirectionY() {
+        return facingDirectionY;
+    }
+
+    public void setFacingDirectionX(int facingDirectionX) {
+        this.facingDirectionX = facingDirectionX;
+    }
+
+    public void setFacingDirectionY(int facingDirectionY) {
+        this.facingDirectionY = facingDirectionY;
+    }
+
     public boolean getHasDMGItem() {
         return hasDMGItem;
     }
@@ -155,7 +161,5 @@ public class Robot {
     public void setDamage(int damage) {
         this.damage = damage;
     }
-
-
 }
 
