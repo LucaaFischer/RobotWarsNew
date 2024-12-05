@@ -13,10 +13,6 @@ public class MoveValidator {
             System.out.println("This field is blocked, do again!");
             return false;
 
-        } else if (x > GameController.tempRobotTurnX + 1 || y > GameController.tempRobotTurnY + 1 || x < GameController.tempRobotTurnX - 1 || y < GameController.tempRobotTurnY - 1) {
-            System.out.println("Invalid move, do again!");
-            return false;
-
         } else if (x == robotNotTurn.getX() && y == robotNotTurn.getY()) {
             System.out.println("You can't stand on the same field as your enemy, do again!");
             return false;

@@ -8,8 +8,6 @@ import com.btcag.bootcamp.Classes.Views.*;
 public class GameController {
     //---------------------------------------------------------------------------Startpositionen für die Roboter------------------------------------------------------------------
     public static int countTurns = 0;
-    public static int tempRobotTurnX;
-    public static int tempRobotTurnY;
     public static int movementThisRound;
     public static Board board = new Board();
     public static Items[] items = ItemController.generateItems();
@@ -17,8 +15,6 @@ public class GameController {
     public static void turn(Robot robotTurn, Robot robotNotTurn, Player playerTurn, Player playerNotTurn, FightController fightController) {
         movementThisRound = robotTurn.getMovement();
         GameView.playerTurnMessage(playerTurn);
-        tempRobotTurnX = robotTurn.getX();
-        tempRobotTurnY = robotTurn.getY();
 
         while (movementThisRound > 0 && !fightController.checkWin(robotTurn, robotNotTurn)) {
             GameView.movementLeftMessage(playerTurn);
@@ -30,8 +26,6 @@ public class GameController {
                     robotTurn.setMove(AskForMove.askForMove(), robotNotTurn);
                 }
 
-            tempRobotTurnX = robotTurn.getX();
-            tempRobotTurnY = robotTurn.getY();
             movementThisRound--;
 
             board.drawBoard(robotTurn, robotNotTurn, playerTurn, playerNotTurn, items);
