@@ -1,6 +1,5 @@
 package com.btcag.bootcamp.Classes.Services.entities;
 
-import com.btcag.bootcamp.Classes.Models.Robot;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;

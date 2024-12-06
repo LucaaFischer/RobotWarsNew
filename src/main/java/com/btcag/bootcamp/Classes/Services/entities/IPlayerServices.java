@@ -1,6 +1,6 @@
 package com.btcag.bootcamp.Classes.Services.entities;
 
-import com.btcag.bootcamp.Classes.Models.Player;
+import com.btcag.bootcamp.Classes.Models.Player.Player;
 
 import java.util.ArrayList;
 

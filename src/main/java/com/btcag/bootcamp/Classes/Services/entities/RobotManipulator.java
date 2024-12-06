@@ -1,7 +1,7 @@
 package com.btcag.bootcamp.Classes.Services.entities;
 
-import com.btcag.bootcamp.Classes.Models.Items;
-import com.btcag.bootcamp.Classes.Models.Robot;
+import com.btcag.bootcamp.Classes.Models.Items.Items;
+import com.btcag.bootcamp.Classes.Models.Robot.Robot;
 import com.btcag.bootcamp.Classes.Services.Enums.Align;
 import jakarta.persistence.*;
 
