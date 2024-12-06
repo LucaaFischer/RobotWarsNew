@@ -6,6 +6,6 @@ public class FightView {
     }
 
     public static void noWinnerMessage() {
-        System.out.println("But no one won");
+        System.out.println("But your opponent is still alive!");
     }
 }

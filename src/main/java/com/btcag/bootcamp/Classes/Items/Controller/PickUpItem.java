@@ -4,8 +4,8 @@ import com.btcag.bootcamp.Classes.Items.Model.DMGItem;
 import com.btcag.bootcamp.Classes.Items.Model.Items;
 import com.btcag.bootcamp.Classes.Items.Model.MovementItem;
 import com.btcag.bootcamp.Classes.Items.Model.RangeItem;
+import com.btcag.bootcamp.Classes.Items.View.PickUpItemMessage;
 import com.btcag.bootcamp.Classes.Robot.Model.Robot;
-import com.btcag.bootcamp.Classes.Items.View.AlreadyHaveThisItemMessage;
 
 public class PickUpItem {
     public static boolean checkPickUp(Robot robot, Items item) {
@@ -19,7 +19,7 @@ public class PickUpItem {
         if ((item instanceof DMGItem && robot.getHasDMGItem())
                 || (item instanceof RangeItem && robot.getHasRangeItem())
                 || (item instanceof MovementItem && robot.getHasMovementItem())) {
-            AlreadyHaveThisItemMessage.message();
+            PickUpItemMessage.alreadyHaveThisItemMessage();
             return true;
         }
         return false;

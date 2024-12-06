@@ -25,12 +25,15 @@ public class AdjustItemDuration {
         for (Items expiredItem : itemsToRemove) {
             if (expiredItem instanceof RangeItem && expiredItem.getItemTookEffect()) {
                 robot.setRange(robot.getRange() - expiredItem.itemValue());
+                robot.setHasRangeItem(false);
 
             } else if (expiredItem instanceof DMGItem && expiredItem.getItemTookEffect()) {
                 robot.setDamage(robot.getDamage() - expiredItem.itemValue());
+                robot.setHasDMGItem(false);
 
             } else if (expiredItem instanceof MovementItem && expiredItem.getItemTookEffect()) {
                 robot.setMovement(robot.getMovement() - expiredItem.itemValue());
+                robot.setHasMovementItem(false);
             }
         }
     }
