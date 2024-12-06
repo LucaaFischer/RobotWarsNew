@@ -1,6 +1,6 @@
-package com.btcag.bootcamp.Classes.Services.entities;
+package com.btcag.bootcamp.Classes.HibernateStuff.entities;
 
-import com.btcag.bootcamp.Classes.Services.Enums.BoardItemType;
+import com.btcag.bootcamp.Classes.HibernateStuff.Enums.BoardItemType;
 import jakarta.persistence.*;
 
 @Entity(name = "BoardItem")

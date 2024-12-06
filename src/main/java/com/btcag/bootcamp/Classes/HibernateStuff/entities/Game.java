@@ -1,4 +1,4 @@
-package com.btcag.bootcamp.Classes.Services.entities;
+package com.btcag.bootcamp.Classes.HibernateStuff.entities;
 
 import jakarta.persistence.*;
 

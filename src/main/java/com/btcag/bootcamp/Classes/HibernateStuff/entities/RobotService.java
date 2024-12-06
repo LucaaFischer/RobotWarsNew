@@ -1,4 +1,4 @@
-package com.btcag.bootcamp.Classes.Services.entities;
+package com.btcag.bootcamp.Classes.HibernateStuff.entities;
 
 import jakarta.persistence.*;
 
@@ -25,8 +25,6 @@ public class RobotService {
     @Column(name = "Movement")
     private int movement;
 
-    @OneToMany(mappedBy = "robot", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<RobotManipulator> robotManipulator = new ArrayList<>();
 
     public long getRobotID() {
         return robotID;
@@ -66,13 +64,5 @@ public class RobotService {
 
     public void setMovement(int movement) {
         this.movement = movement;
-    }
-
-    public List<RobotManipulator> getRobotManipulator() {
-        return robotManipulator;
-    }
-
-    public void setRobotManipulator(List<RobotManipulator> robotManipulator) {
-        this.robotManipulator = robotManipulator;
     }
 }

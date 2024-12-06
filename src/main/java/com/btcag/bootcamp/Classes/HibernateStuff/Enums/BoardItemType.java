@@ -1,4 +1,4 @@
-package com.btcag.bootcamp.Classes.Services.Enums;
+package com.btcag.bootcamp.Classes.HibernateStuff.Enums;
 
 public enum BoardItemType {
     ROBOT,
