@@ -7,12 +7,12 @@ import java.util.Random;
 
 public class RangeItem extends Items {
     static Random rand = new Random();
-    String itemName = "Range-Item";
-    int chance = rand.nextInt(101);
-    int duration = 2;
-    int x;
-    int y;
-    boolean itemTookEffect;
+    private final String itemName = "Range-Item";
+    private final int chance = rand.nextInt(101);
+    private int duration = 2;
+    private int x;
+    private int y;
+    private boolean itemTookEffect;
 
     @Override
     public String getItemName() {

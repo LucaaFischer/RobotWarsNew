@@ -3,13 +3,8 @@ package com.btcag.bootcamp.Classes.Items.Model;
 import com.btcag.bootcamp.Classes.Robot.Model.Robot;
 
 public abstract class Items {
-
-    String itemName;
     int x;
     int y;
-    int duration;
-    int chance;
-    boolean itemTookEffect;
 
     public abstract String getItemName();
 

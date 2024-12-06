@@ -6,7 +6,7 @@ import com.btcag.bootcamp.Classes.Combat.View.FightView;
 import com.btcag.bootcamp.Classes.Robot.View.PrintStatsView;
 
 public class FightController {
-    public boolean hasAttacked;
+    private boolean hasAttacked;
 
     //------------------------------------------------------------------------Kampfablauf--------------------------------------------------------------------------------------------
     public void fight(Robot robotTurn, Robot robotNotTurn, Player playerTurn, Player playerNotTurn) {

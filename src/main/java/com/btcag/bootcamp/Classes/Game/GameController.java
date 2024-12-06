@@ -14,10 +14,10 @@ import com.btcag.bootcamp.Classes.Items.View.PrintLeftoverItemDuration;
 
 public class GameController {
     //---------------------------------------------------------------------------Startpositionen für die Roboter------------------------------------------------------------------
-    public static int countTurns = 0;
+    protected static int countTurns = 0;
     public static int movementThisRound;
-    public static Board board = new Board();
-    public static Items[] items = ItemController.generateItems();
+    protected static Board board = new Board();
+    protected static Items[] items = ItemController.generateItems();
 
     public static void turn(Robot robotTurn, Robot robotNotTurn, Player playerTurn, Player playerNotTurn, FightController fightController) {
         movementThisRound = robotTurn.getMovement();
@@ -40,7 +40,7 @@ public class GameController {
 
         AdjustItemDuration.adjustDuration(robotTurn.getItemsOnRobot(), robotTurn);
         PrintLeftoverItemDuration.printDuration(robotTurn.getItemsOnRobot(), playerTurn);
-        playerTurn.skillPoints++;
+        playerTurn.setSkillPoints(playerTurn.getSkillPoints()+1);
         fightController.setHasAttacked(false);
     }
 }

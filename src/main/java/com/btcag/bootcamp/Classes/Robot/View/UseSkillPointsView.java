@@ -12,6 +12,6 @@ public class UseSkillPointsView {
     }
 
     public static void skillPointsLeftMessage(Player player) {
-        System.out.println(STR."You have \{player.skillPoints} skillpoint(s) left, \{player.getName()}");
+        System.out.println(STR."You have \{player.getSkillPoints()} skillpoint(s) left, \{player.getName()}");
     }
 }

@@ -7,12 +7,12 @@ import java.util.Random;
 
 public class DMGItem extends Items {
     Random rand = new Random();
-    String itemName = "Damage-Item";
-    int chance = rand.nextInt(101);
-    int duration = 2;
-    int x;
-    int y;
-    boolean itemTookEffect;
+    private final String itemName = "Damage-Item";
+    private final int chance = rand.nextInt(101);
+    private int duration = 2;
+    private int x;
+    private int y;
+    private boolean itemTookEffect;
 
     @Override
     public String getItemName() {
