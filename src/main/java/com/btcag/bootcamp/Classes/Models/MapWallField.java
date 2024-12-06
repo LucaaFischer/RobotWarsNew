@@ -1,4 +1,4 @@
-package com.btcag.bootcamp.Classes.Views;
+package com.btcag.bootcamp.Classes.Models;
 
 import com.btcag.bootcamp.Classes.Enums.Walls;
 

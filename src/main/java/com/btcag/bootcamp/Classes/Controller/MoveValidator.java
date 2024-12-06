@@ -1,7 +1,7 @@
 package com.btcag.bootcamp.Classes.Controller;
 
 import com.btcag.bootcamp.Classes.Models.Robot;
-import com.btcag.bootcamp.Classes.Views.MapWallField;
+import com.btcag.bootcamp.Classes.Models.MapWallField;
 
 public class MoveValidator {
     public static boolean moveValid(int x, int y, Robot robotNotTurn) {

@@ -13,7 +13,7 @@ public class UseSkillPointsController {
     }
 
     public static void endOfRoundSkillPoints(Player player1, Player player2, Robot robot1, Robot robot2) {
-        if (!CheckInRange.attackPossible(robot1, robot2)) {
+        if (!CheckAttackPossible.attackPossible(robot1, robot2)) {
             UseSkillPointsView.endSkillPointsMessage();
             useSkillPoints(player1, player2, robot1, robot2);
         }

@@ -19,7 +19,7 @@ public class GameController {
         while (movementThisRound > 0 && !fightController.checkWin(robotTurn, robotNotTurn)) {
             GameView.movementLeftMessage(playerTurn);
 
-                if (CheckInRange.attackPossible(robotTurn, robotNotTurn) && !fightController.getHasAttacked()) {
+                if (CheckAttackPossible.attackPossible(robotTurn, robotNotTurn) && !fightController.getHasAttacked()) {
                     AskForCombatView.askForCombat(robotTurn, robotNotTurn, playerTurn, playerNotTurn, fightController);
 
                 } else {
