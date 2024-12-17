@@ -5,6 +5,7 @@ import com.btcag.bootcamp.Classes.Combat.Controller.FightController;
 import com.btcag.bootcamp.Classes.Items.Controller.AdjustItemDuration;
 import com.btcag.bootcamp.Classes.Items.Controller.ItemController;
 import com.btcag.bootcamp.Classes.Items.Model.Items;
+import com.btcag.bootcamp.Classes.Map.Model.Map;
 import com.btcag.bootcamp.Classes.Player.Model.Player;
 import com.btcag.bootcamp.Classes.Robot.Model.Robot;
 import com.btcag.bootcamp.Classes.Map.View.Board;
@@ -18,6 +19,7 @@ public class GameController {
     public static int movementThisRound;
     protected static Board board = new Board();
     protected static Items[] items = ItemController.generateItems();
+    protected static Map map = new Map();
 
     public static void turn(Robot robotTurn, Robot robotNotTurn, Player playerTurn, Player playerNotTurn, FightController fightController) {
         movementThisRound = robotTurn.getMovement();
@@ -34,7 +36,7 @@ public class GameController {
                 }
 
             movementThisRound--;
-            board.drawBoard(robotTurn, robotNotTurn, playerTurn, playerNotTurn, items);
+            board.drawBoard(map, robotTurn, robotNotTurn, playerTurn, playerNotTurn, items);
             items = ItemController.removePickedUpItems(items, robotTurn, robotNotTurn, playerTurn, playerNotTurn);
         }
 
