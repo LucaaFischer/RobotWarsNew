@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity(name = "Map")
 @Table(name = "Map")
-public class Board {
+public class MapEntity {
     @Column(name = "Map_id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,7 +26,7 @@ public class Board {
     private List<BoardItem> boardItems;
 
     @OneToMany(mappedBy = "Map", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Game> games = new ArrayList<>();
+    private List<GameEntity> games = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -68,12 +68,11 @@ public class Board {
         this.boardItems = boardItems;
     }
 
-    public List<Game> getGames() {
+    public List<GameEntity> getGames() {
         return games;
     }
 
-    public void addGame(Game game) {
+    public void addGame(GameEntity game) {
         this.games.add(game);
-        game.setBoard(this);
     }
 }

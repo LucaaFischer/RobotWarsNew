@@ -3,9 +3,10 @@ package com.btcag.bootcamp.Classes.Player.View;
 import java.util.Scanner;
 
 public class AskForPlayerView {
+    protected static Scanner input = new Scanner(System.in);
+
     public static String askForName() {
         String name = "";
-        Scanner input = new Scanner(System.in);
         do {
             System.out.println("Please enter your name: ");
             name = input.nextLine();
@@ -21,5 +22,11 @@ public class AskForPlayerView {
             avatar = input.nextLine();
         } while (avatar.length() != 1);
         return avatar;
+    }
+
+    public static String askForPassword() {
+        System.out.println("Please choose a password: ");
+        String password = input.nextLine();
+        return password;
     }
 }

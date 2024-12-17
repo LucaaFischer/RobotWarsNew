@@ -4,7 +4,7 @@ import com.btcag.bootcamp.Classes.Player.Model.Player;
 
 public class UseSkillPointsView {
     public static void startSkillPointsMessage() {
-        System.out.println("Game started! Use your start-skillpoints!\n");
+        System.out.println("GameEntity started! Use your start-skillpoints!\n");
     }
 
     public static void endSkillPointsMessage() {

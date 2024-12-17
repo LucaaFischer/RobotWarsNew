@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name ="players")
-public class PlayerService {
+public class PlayerEntity {
     @Column(name = "UserID", nullable = false)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

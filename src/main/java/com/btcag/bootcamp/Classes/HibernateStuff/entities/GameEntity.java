@@ -1,13 +1,14 @@
 package com.btcag.bootcamp.Classes.HibernateStuff.entities;
 
+import com.btcag.bootcamp.Classes.Map.Model.Map;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "Game")
-@Table(name = "Game")
-public class Game {
+@Table(name = "GameEntity")
+public class GameEntity {
     @Column(name = "Game_id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,7 +16,7 @@ public class Game {
 
     @ManyToOne
     @JoinColumn(name = "Map_id", nullable = false)
-    private Board board;
+    private MapEntity map;
 
     @Column(name = "Moves")
     @OneToMany(mappedBy = "Game", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -25,16 +26,12 @@ public class Game {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public MapEntity getMap() {
+        return map;
     }
 
-    public Board getBoard() {
-        return board;
-    }
-
-    public void setBoard(Board board) {
-        this.board = board;
+    public void setMap(MapEntity map) {
+        this.map = map;
     }
 
     public List<Move> getMoves() {

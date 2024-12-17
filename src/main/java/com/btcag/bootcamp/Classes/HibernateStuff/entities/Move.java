@@ -14,7 +14,7 @@ public class Move {
 
     @ManyToOne
     @JoinColumn(name = "Game_ID", nullable = false)
-    private Game game;
+    private GameEntity game;
 
     @Enumerated(EnumType.STRING)
     private MoveType moveType;
@@ -27,11 +27,11 @@ public class Move {
         this.id = id;
     }
 
-    public Game getGame() {
+    public GameEntity getGame() {
         return game;
     }
 
-    public void setGame(Game game) {
+    public void setGame(GameEntity game) {
         this.game = game;
     }
 

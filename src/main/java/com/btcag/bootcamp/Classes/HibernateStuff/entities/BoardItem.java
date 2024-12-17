@@ -19,7 +19,7 @@ public class BoardItem {
 
     @ManyToOne
     @JoinColumn(name = "Board_id", nullable = false)
-    private Board board;
+    private MapEntity board;
 
     public Long getId() {
         return id;
@@ -45,11 +45,11 @@ public class BoardItem {
         this.index = index;
     }
 
-    public Board getMap() {
+    public MapEntity getMap() {
         return board;
     }
 
-    public void setMap(Board board) {
+    public void setMap(MapEntity board) {
         this.board = board;
     }
 }
