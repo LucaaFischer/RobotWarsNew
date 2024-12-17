@@ -1,6 +1,5 @@
 package com.btcag.bootcamp.Classes.HibernateStuff.entities;
 
-import com.btcag.bootcamp.Classes.Map.Model.Map;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -18,9 +17,14 @@ public class GameEntity {
     @JoinColumn(name = "Map_id", nullable = false)
     private MapEntity map;
 
+    @Column(name = "Players")
+    @OneToMany
+    @JoinColumn(name = "PlayerID", nullable = false)
+    private List<PlayerEntity> players = new ArrayList<>();
+
     @Column(name = "Moves")
     @OneToMany(mappedBy = "Game", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Move> moves = new ArrayList<>();
+    private List<MoveEntity> moves = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -34,11 +38,14 @@ public class GameEntity {
         this.map = map;
     }
 
-    public List<Move> getMoves() {
+    public List<MoveEntity> getMoves() {
         return moves;
     }
 
-    public void addMove(Move move) {
+    public void addPlayer(PlayerEntity player) {
+        this.players.add(player);
+    }
+    public void addMove(MoveEntity move) {
         this.moves.add(move);
         move.setGame(this);
     }

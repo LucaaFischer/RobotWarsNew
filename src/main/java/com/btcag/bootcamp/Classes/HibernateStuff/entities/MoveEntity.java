@@ -4,9 +4,9 @@ import com.btcag.bootcamp.Classes.HibernateStuff.Enums.MoveType;
 import jakarta.persistence.*;
 
 @Entity(name = "Move")
-@Table(name = "Move")
+@Table(name = "MoveEntity")
 
-public class Move {
+public class MoveEntity {
     @Column(name = "Move_id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

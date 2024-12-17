@@ -2,12 +2,9 @@ package com.btcag.bootcamp.Classes.HibernateStuff.entities;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Table
-public class RobotService {
+public class RobotEntity {
     @Column(name = "RobotID", nullable = false)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

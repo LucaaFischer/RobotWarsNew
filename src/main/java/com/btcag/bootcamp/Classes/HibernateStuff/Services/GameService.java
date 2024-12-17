@@ -4,10 +4,12 @@ import com.btcag.bootcamp.Classes.HibernateStuff.Connection;
 import com.btcag.bootcamp.Classes.HibernateStuff.Interfaces.IGameServices;
 import com.btcag.bootcamp.Classes.HibernateStuff.entities.GameEntity;
 import com.btcag.bootcamp.Classes.HibernateStuff.entities.MapEntity;
-import com.btcag.bootcamp.Classes.HibernateStuff.entities.Move;
+import com.btcag.bootcamp.Classes.HibernateStuff.entities.MoveEntity;
 
 import java.awt.*;
 import java.util.ArrayList;
+
+import com.btcag.bootcamp.Classes.HibernateStuff.entities.PlayerEntity;
 import org.hibernate.Session;
 
 public class GameService implements IGameServices {
@@ -30,27 +32,35 @@ public class GameService implements IGameServices {
     }
 
     @Override
-    public GameEntity joinGame(int gameID, Robot robot) {
+    public void joinGame(int gameID, PlayerEntity player, Robot robot) {
+        Session session = Connection.openSession();
+
+        GameEntity game = session.get(GameEntity.class, gameID);
+
+        game.addPlayer(player);
+
+        Connection.closeSession(session);
+
+
+    }
+
+    @Override
+    public ArrayList<MoveEntity> getMoves(int gameID) {
         return null;
     }
 
     @Override
-    public ArrayList<Move> getMoves(int gameID) {
+    public ArrayList<MoveEntity> getMovesAfter(int gameID, int moveID) {
         return null;
     }
 
     @Override
-    public ArrayList<Move> getMovesAfter(int gameID, int moveID) {
+    public MoveEntity getMove(int gameID, int moveID) {
         return null;
     }
 
     @Override
-    public Move getMove(int gameID, int moveID) {
-        return null;
-    }
-
-    @Override
-    public void makeMove(int gameID, Move move) {
+    public void makeMove(int gameID, MoveEntity move) {
     }
 
 }

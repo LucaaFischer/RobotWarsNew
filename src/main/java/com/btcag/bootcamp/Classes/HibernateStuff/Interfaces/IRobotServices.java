@@ -6,7 +6,7 @@ import com.btcag.bootcamp.Classes.Robot.Model.Robot;
 import java.util.ArrayList;
 
 public interface IRobotServices {
-    public ArrayList<Robot> getAllRobots(int gameID); // gibt alle robots des Games
-    public Robot getRobot(int id); // gibt specific robot
-    public Robot createRobot(Player player); // Lässt User Stats skillen
+    ArrayList<Robot> getAllRobots(int gameID); // gibt alle robots des Games
+    Robot getRobot(int id); // gibt specific robot
+    Robot createRobot(Player player); // Lässt User Stats skillen
 }
