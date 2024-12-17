@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 
 @Entity(name = "Move")
 @Table(name = "MoveEntity")
-
 public class MoveEntity {
     @Column(name = "Move_id")
     @Id
@@ -25,10 +24,6 @@ public class MoveEntity {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public GameEntity getGame() {
-        return game;
     }
 
     public void setGame(GameEntity game) {

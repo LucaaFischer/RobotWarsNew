@@ -13,15 +13,11 @@ import com.btcag.bootcamp.Classes.HibernateStuff.entities.PlayerEntity;
 import org.hibernate.Session;
 
 public class GameService implements IGameServices {
+    protected Session session = Connection.openSession();
+
     @Override
     public GameEntity getGame(int id) {
-        Session session = Connection.openSession();
-
-        GameEntity game = session.get(GameEntity.class, id);
-
-        Connection.closeSession(session);
-
-        return game;
+        return session.get(GameEntity.class, id);
     }
 
     @Override
@@ -33,34 +29,34 @@ public class GameService implements IGameServices {
 
     @Override
     public void joinGame(int gameID, PlayerEntity player, Robot robot) {
-        Session session = Connection.openSession();
-
         GameEntity game = session.get(GameEntity.class, gameID);
-
         game.addPlayer(player);
-
-        Connection.closeSession(session);
-
-
     }
 
     @Override
     public ArrayList<MoveEntity> getMoves(int gameID) {
-        return null;
+        GameEntity game = session.get(GameEntity.class, gameID);
+
+        return game.getMoves();
     }
 
     @Override
     public ArrayList<MoveEntity> getMovesAfter(int gameID, int moveID) {
-        return null;
+        GameEntity game = session.get(GameEntity.class, gameID);
+
+        return game.getMovesAfter(moveID);
     }
 
     @Override
     public MoveEntity getMove(int gameID, int moveID) {
-        return null;
+        GameEntity game = session.get(GameEntity.class, gameID);
+
+        return game.getMove(moveID);
     }
 
     @Override
     public void makeMove(int gameID, MoveEntity move) {
+        GameEntity game = session.get(GameEntity.class, gameID);
+        game.addMove(move);
     }
-
 }

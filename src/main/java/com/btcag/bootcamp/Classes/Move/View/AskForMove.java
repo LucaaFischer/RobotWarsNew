@@ -8,9 +8,9 @@ public class AskForMove {
     public static String intendedAction() {
         String intendedMove;
         do {
-            System.out.println("Do you want to move or align your robot?");
+            System.out.println("Do you want to move/align your robot or kys?");
             intendedMove = input.nextLine();
-        } while (!intendedMove.equalsIgnoreCase("move") && !intendedMove.equalsIgnoreCase("align"));
+        } while (!intendedMove.equalsIgnoreCase("move") && !intendedMove.equalsIgnoreCase("align") && !intendedMove.equalsIgnoreCase("kys"));
 
         return intendedMove;
     }

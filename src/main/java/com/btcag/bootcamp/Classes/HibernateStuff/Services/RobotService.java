@@ -1,23 +1,37 @@
 package com.btcag.bootcamp.Classes.HibernateStuff.Services;
 
+import com.btcag.bootcamp.Classes.HibernateStuff.Connection;
 import com.btcag.bootcamp.Classes.HibernateStuff.Interfaces.IRobotServices;
-import com.btcag.bootcamp.Classes.Player.Model.Player;
-import com.btcag.bootcamp.Classes.Robot.Model.Robot;
+import com.btcag.bootcamp.Classes.HibernateStuff.entities.GameEntity;
+import com.btcag.bootcamp.Classes.HibernateStuff.entities.PlayerEntity;
+import com.btcag.bootcamp.Classes.HibernateStuff.entities.RobotEntity;
+import org.hibernate.Session;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public class RobotService implements IRobotServices {
+    protected static Session session = Connection.openSession();
+
     @Override
-    public ArrayList<Robot> getAllRobots(int gameID) {
-        return null;
+    public ArrayList<RobotEntity> getAllRobots(int gameID) {
+        GameEntity game = session.get(GameEntity.class, gameID);
+
+        return game.getRobots();
     }
 
-    public Robot getRobot(int robotID) {
-        return null;
+    public RobotEntity getRobot(int robotID) {
+        GameEntity game = session.get(GameEntity.class, robotID);
+
+        return game.getRobot(robotID);
     }
 
-    public Robot createRobot(Player player) {
-        return null;
+    public void createRobot(int gameID, RobotEntity robot, PlayerEntity player, int hp, int dmg, int movement, int range) {
+        GameEntity game = session.get(GameEntity.class, gameID);
+
+        robot.setHp(hp);
+        robot.setAd(dmg);
+        robot.setMovement(movement);
+        robot.setRange(range);
+        game.addRobot(robot, player);
     }
 }

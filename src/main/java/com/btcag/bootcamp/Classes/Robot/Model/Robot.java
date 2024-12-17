@@ -1,5 +1,7 @@
 package com.btcag.bootcamp.Classes.Robot.Model;
 
+import com.btcag.bootcamp.Classes.Combat.Controller.FightController;
+import com.btcag.bootcamp.Classes.Game.GameController;
 import com.btcag.bootcamp.Classes.Move.Controller.MoveRobot;
 import com.btcag.bootcamp.Classes.Enums.Directions;
 import com.btcag.bootcamp.Classes.Items.Model.Items;
@@ -32,12 +34,16 @@ public class Robot {
 
     public void setMove(Robot robotTurn, Robot robotNotTurn) {
         Move move = new Move();
+        String input = AskForMove.intendedAction();
 
-        if(AskForMove.intendedAction().equals("move")) {
+        if(input.equalsIgnoreCase("move")) {
             MoveRobot.moveRobot(AskForMove.askForDirection(), robotTurn, robotNotTurn, move);
 
-        } else {
+        } else if(input.equalsIgnoreCase("align")) {
             MoveRobot.alignRobot(AskForMove.askForDirection(), robotTurn, move);
+
+        } else if(input.equalsIgnoreCase("kys")) {
+            robotTurn.setHp(0);
         }
     }
 

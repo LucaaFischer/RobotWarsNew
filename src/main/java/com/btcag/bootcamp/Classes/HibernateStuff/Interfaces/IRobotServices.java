@@ -1,12 +1,12 @@
 package com.btcag.bootcamp.Classes.HibernateStuff.Interfaces;
 
-import com.btcag.bootcamp.Classes.Player.Model.Player;
-import com.btcag.bootcamp.Classes.Robot.Model.Robot;
+import com.btcag.bootcamp.Classes.HibernateStuff.entities.PlayerEntity;
+import com.btcag.bootcamp.Classes.HibernateStuff.entities.RobotEntity;
 
 import java.util.ArrayList;
 
 public interface IRobotServices {
-    ArrayList<Robot> getAllRobots(int gameID); // gibt alle robots des Games
-    Robot getRobot(int id); // gibt specific robot
-    Robot createRobot(Player player); // Lässt User Stats skillen
+    ArrayList<RobotEntity> getAllRobots(int gameID); // gibt alle robots des Games
+    RobotEntity getRobot(int id); // gibt specific robot
+    void createRobot(int gameID, RobotEntity robot, PlayerEntity player, int hp, int dmg, int movement, int range); // Lässt User Stats skillen
 }

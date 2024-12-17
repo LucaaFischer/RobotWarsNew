@@ -2,7 +2,6 @@ package com.btcag.bootcamp.Classes.HibernateStuff.Services;
 
 import com.btcag.bootcamp.Classes.HibernateStuff.Connection;
 import com.btcag.bootcamp.Classes.HibernateStuff.Interfaces.IPlayerServices;
-import com.btcag.bootcamp.Classes.HibernateStuff.entities.GameEntity;
 import com.btcag.bootcamp.Classes.HibernateStuff.entities.PlayerEntity;
 import com.btcag.bootcamp.Classes.Player.View.AskForPlayerView;
 
@@ -20,7 +19,7 @@ public class PlayerService implements IPlayerServices {
     public PlayerEntity getPlayer(int id) {
         Session session = Connection.openSession();
 
-         PlayerEntity player =session.get(PlayerEntity.class, id);
+         PlayerEntity player = session.get(PlayerEntity.class, id);
 
         Connection.closeSession(session);
 
