@@ -15,7 +15,6 @@ public class Board {
                 System.out.println();
             }
         }
-        //System.out.println(map.getMap(items, robot1, robot2, player1, player2).toString());
 
         System.out.println(STR."\{player1.getName()}'s robot (\{player1.getAvatar()}) is on field x \{robot1.getX()} y \{robot1.getY()}.");
         System.out.println(STR."He is facing \{robot1.getFacingDirection()}");

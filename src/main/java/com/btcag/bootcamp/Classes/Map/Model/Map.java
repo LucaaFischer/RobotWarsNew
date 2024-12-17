@@ -7,16 +7,14 @@ import com.btcag.bootcamp.Classes.Robot.Model.Robot;
 
 public class Map {
     private static final int SIZE = 15;
-    private String[] map = new String[SIZE];
 
     private static final String EMPTYFIELD = "[   ]";
     private static final String WALLFIELD = Walls.WALL1.icon;
     private static final String ITEMFIELD = "?";
+    private static String[] map = new String[SIZE * SIZE];
 
     public String[] getMap(Items[] items, Robot robot1, Robot robot2, Player player1, Player player2) {
-        String[] map = new String[15 * 15];
         int index = 0;
-
         for (int y = 1; y <= 15; y++) {
             for (int x = 1; x <= 15; x++) {
                 if (x == robot1.getX() && y== robot1.getY()) {
