@@ -2,6 +2,7 @@ package com.btcag.bootcamp.Classes.Map.View;
 
 import com.btcag.bootcamp.Classes.Items.Model.Items;
 import com.btcag.bootcamp.Classes.Map.Model.Map;
+import com.btcag.bootcamp.Classes.Move.Move;
 import com.btcag.bootcamp.Classes.Player.Model.Player;
 import com.btcag.bootcamp.Classes.Robot.Model.Robot;
 

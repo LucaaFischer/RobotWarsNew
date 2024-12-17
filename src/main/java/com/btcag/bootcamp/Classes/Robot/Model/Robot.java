@@ -3,6 +3,7 @@ package com.btcag.bootcamp.Classes.Robot.Model;
 import com.btcag.bootcamp.Classes.Move.Controller.MoveRobot;
 import com.btcag.bootcamp.Classes.Enums.Directions;
 import com.btcag.bootcamp.Classes.Items.Model.Items;
+import com.btcag.bootcamp.Classes.Move.Move;
 import com.btcag.bootcamp.Classes.Move.View.AskForMove;
 import com.btcag.bootcamp.Classes.Robot.View.SkillStatMessages;
 
@@ -30,11 +31,13 @@ public class Robot {
     }
 
     public void setMove(Robot robotTurn, Robot robotNotTurn) {
+        Move move = new Move();
+
         if(AskForMove.intendedAction().equals("move")) {
-            MoveRobot.moveRobot(AskForMove.askForDirection(), robotTurn, robotNotTurn);
+            MoveRobot.moveRobot(AskForMove.askForDirection(), robotTurn, robotNotTurn, move);
 
         } else {
-            MoveRobot.alignRobot(AskForMove.askForDirection(), robotTurn);
+            MoveRobot.alignRobot(AskForMove.askForDirection(), robotTurn, move);
         }
     }
 

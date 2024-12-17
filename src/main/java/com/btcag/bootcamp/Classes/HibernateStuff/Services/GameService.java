@@ -14,9 +14,14 @@ public class GameService implements IGameServices {
     };
 
     @Override
-    public RobotWars createGame(int playerCount, int MapID, ArrayList<Robot> robots) {
+    public RobotWars createGame(int playerCount, int MapID, Robot robot, int playerID) {
         return null;
     };
+
+    @Override
+    public RobotWars joinGame(int gameID, Robot robot) {
+        return null;
+    }
 
     @Override
     public ArrayList<Move> getMoves(int gameID) {
